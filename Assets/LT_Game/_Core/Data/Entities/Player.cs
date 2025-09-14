@@ -11,7 +11,7 @@ namespace LT_Game.Core.Data.Entities
         public Weapon CurrentWeapon { get; private set; }
 
         public Player(int baseHealth, int strength, int agility, int endurance, Weapon weapon) :
-            base(baseHealth, strength, agility, endurance)
+            base(baseHealth + endurance, strength, agility, endurance)
         {
             CurrentWeapon = weapon ?? throw new ArgumentException("Weapon cannot be null", nameof(weapon));
         }

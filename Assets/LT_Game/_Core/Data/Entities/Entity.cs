@@ -24,7 +24,7 @@ namespace LT_Game.Core.Data.Entities
             Strength = strength;
             Agility = agility;
             Endurance = endurance;
-            MaxHealth = baseHealth + endurance;
+            MaxHealth = baseHealth;
             Health = MaxHealth;
         }
 
