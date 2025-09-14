@@ -3,11 +3,11 @@ using LT_Game.Core.Data.Enums;
 
 namespace LT_Game.Core.Data
 {
-    public sealed class Weapon
+    public class Weapon
     {
-        public string Name { get; }
-        public int Damage { get; }
-        public DamageType WeaponDamageType { get; }
+        public string name { get; }
+        public int damage { get; }
+        public DamageType weaponDamageType { get; }
 
         public Weapon(string name, int damage, DamageType damageType)
         {
@@ -16,12 +16,12 @@ namespace LT_Game.Core.Data
             if (damage <= 0)
                 throw new ArgumentException("Weapon damage cannot be less or equal to zero", nameof(damage));
             
-            Name = name;
-            Damage = damage;
-            WeaponDamageType = damageType;
+            this.name = name;
+            this.damage = damage;
+            weaponDamageType = damageType;
         }
         
         public override string ToString() => 
-            $"Weapon{{Name: {Name}, Damage: {Damage}, DamageType: {WeaponDamageType}}}";
+            $"Weapon{{Name: {name}, Damage: {damage}, DamageType: {weaponDamageType}}}";
     }
 }

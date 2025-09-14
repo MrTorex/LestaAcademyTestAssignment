@@ -19,13 +19,13 @@ namespace LT_Game.Core.GameSystems
             {
                 var enemy = GetRandomEnemy(randomizer);
                 
-                Debug.Log($"\n=== Battle with {enemy.Name} ===");
+                Debug.Log($"\n=== Battle with {enemy.name} ===");
                 var result = CombatService.SimulateBattle(player, enemy);
         
-                foreach (var log in result.Logs)
+                foreach (var log in result.logs)
                     Debug.Log(log);
 
-                if (result.Winner == player)
+                if (result.winner == player)
                 {
                     player.HealToFull();
                     LevelUpPlayer(player, randomizer);

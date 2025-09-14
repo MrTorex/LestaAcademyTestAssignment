@@ -10,22 +10,22 @@ namespace LT_Game.Core.GameSystems
         private static readonly Random Randomizer = new();
         public class CombatResult
         {
-            public Entity Winner { get; set; }
-            public List<string> Logs { get; } = new();
+            public Entity winner { get; set; }
+            public List<string> logs { get; } = new();
         }
 
         public static CombatResult SimulateBattle(Player player, Enemy enemy)
         {
             var result = new CombatResult();
             
-            var battlers = new List<Entity> { player, enemy }.OrderByDescending(entity => entity.Agility).ToList();
-            if (player.Agility == enemy.Agility)
+            var battlers = new List<Entity> { player, enemy }.OrderByDescending(entity => entity.agility).ToList();
+            if (player.agility == enemy.agility)
                 battlers = new List<Entity> { player, enemy };
             
             var first = battlers.First();
             var second = battlers.Last();
             
-            result.Logs.Add($"{GetEntityName(first)} is first, {GetEntityName(second)} is second.");
+            result.logs.Add($"{GetEntityName(first)} is first, {GetEntityName(second)} is second.");
             
             while (player.IsAlive && enemy.IsAlive)
             {
@@ -36,11 +36,11 @@ namespace LT_Game.Core.GameSystems
                 if (!first.IsAlive) break;
             }
             
-            result.Winner = player.IsAlive ? player : enemy;
+            result.winner = player.IsAlive ? player : enemy;
             Entity loser = player.IsAlive ? enemy : player;
             
-            result.Logs.Add($"{GetEntityName(result.Winner)} killed {GetEntityName(loser)}. " +
-                            $"{GetEntityName(result.Winner)} HP: {result.Winner.Health}");
+            result.logs.Add($"{GetEntityName(result.winner)} killed {GetEntityName(loser)}. " +
+                            $"{GetEntityName(result.winner)} HP: {result.winner.health}");
 
             return result;
         }
@@ -52,21 +52,21 @@ namespace LT_Game.Core.GameSystems
                 var damage = attacker.CalculateDamage();
                 defender.TakeDamage(damage);
                 
-                result.Logs.Add($"{GetEntityName(attacker)} damaged {GetEntityName(defender)}: {damage}. " +
-                                $"{GetEntityName(defender)} HP: {defender.Health}");
+                result.logs.Add($"{GetEntityName(attacker)} damaged {GetEntityName(defender)}: {damage}. " +
+                                $"{GetEntityName(defender)} HP: {defender.health}");
             }
             else
-                result.Logs.Add($"{GetEntityName(attacker)} missed by {GetEntityName(defender)}.");
+                result.logs.Add($"{GetEntityName(attacker)} missed by {GetEntityName(defender)}.");
         }
 
         public static bool CheckHit(Entity attacker, Entity defender) => 
-            Randomizer.Next(1, attacker.Agility + defender.Agility + 1) > defender.Agility;
+            Randomizer.Next(1, attacker.agility + defender.agility + 1) > defender.agility;
         
         private static string GetEntityName(Entity entity) =>
             entity switch
             {
                 Player => "Player",
-                Enemy enemy => enemy.Name,
+                Enemy enemy => enemy.name,
                 _ => "Unknown" 
             };
     }

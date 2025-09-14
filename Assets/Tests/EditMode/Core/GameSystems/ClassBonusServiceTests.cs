@@ -16,7 +16,7 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
             
             ClassBonusService.ApplyLevelBonus(ClassType.Warrior, 3, player);
             
-            Assert.AreEqual(6, player.Strength);
+            Assert.AreEqual(6, player.strength);
         }
     }
 }

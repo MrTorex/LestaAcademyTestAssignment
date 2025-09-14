@@ -32,7 +32,7 @@ namespace LT_Game.Core.GameSystems
                     Console.WriteLine("Скрытая атака");
                     break;
                 case 2:
-                    player.Agility++;
+                    player.agility++;
                     Console.WriteLine("Ловкость +1");
                     break;
                 case 3:
@@ -54,7 +54,7 @@ namespace LT_Game.Core.GameSystems
                     Console.WriteLine("Щит");
                     break;
                 case 3:
-                    player.Strength++;
+                    player.strength++;
                     Console.WriteLine("Сила +1");
                     break;
                 default:
@@ -73,7 +73,7 @@ namespace LT_Game.Core.GameSystems
                     Console.WriteLine("Каменная кожа");
                     break;
                 case 3:
-                    player.Endurance++;
+                    player.endurance++;
                     Console.WriteLine("Выносливость +1");
                     break;
                 default:

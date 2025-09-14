@@ -31,11 +31,11 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
 
             foreach (var enemy in allEnemies)
             {
-                Debug.Log($"\n=== Battle with {enemy.Name} ===");
+                Debug.Log($"\n=== Battle with {enemy.name} ===");
         
                 var result = CombatService.SimulateBattle(player, enemy);
         
-                foreach (var log in result.Logs)
+                foreach (var log in result.logs)
                     Debug.Log(log);
 
                 Debug.Log("===============================\n");

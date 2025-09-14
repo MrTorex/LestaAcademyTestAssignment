@@ -4,11 +4,11 @@ namespace LT_Game.Core.Data.Entities
 {
     public abstract class Entity
     {
-        public int Health { get; set; }
-        public int MaxHealth { get; set; }
-        public int Strength { get; set; }
-        public int Agility { get; set; }
-        public int Endurance { get; set; }
+        public int health { get; set; }
+        public int maxHealth { get; set; }
+        public int strength { get; set; }
+        public int agility { get; set; }
+        public int endurance { get; set; }
 
         protected Entity(int baseHealth, int strength, int agility, int endurance)
         {
@@ -21,25 +21,25 @@ namespace LT_Game.Core.Data.Entities
             if (endurance <= 0)
                 throw new ArgumentException("Endurance must be positive", nameof(endurance));
             
-            Strength = strength;
-            Agility = agility;
-            Endurance = endurance;
-            MaxHealth = baseHealth;
-            Health = MaxHealth;
+            this.strength = strength;
+            this.agility = agility;
+            this.endurance = endurance;
+            maxHealth = baseHealth;
+            health = maxHealth;
         }
 
         public abstract int CalculateDamage();
         
         public void TakeDamage(int amount) => 
-            Health -= amount;
+            health -= amount;
         
         public bool IsAlive =>
-            Health > 0;
+            health > 0;
         
         public void HealToFull() => 
-            Health = MaxHealth;
+            health = maxHealth;
 
         public override string ToString() => 
-            $"Entity{{Health: {Health}, MaxHealth: {MaxHealth}, Strength: {Strength}, Agility: {Agility},  Endurance: {Endurance}}}";
+            $"Entity{{Health: {health}, MaxHealth: {maxHealth}, Strength: {strength}, Agility: {agility},  Endurance: {endurance}}}";
     }
 }

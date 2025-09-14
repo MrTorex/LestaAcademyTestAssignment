@@ -120,16 +120,16 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
     
             var result = CombatService.SimulateBattle(player, goblin);
     
-            foreach (var log in result.Logs)
+            foreach (var log in result.logs)
                 Debug.Log(log);
 
-            if (result.Winner == player)
+            if (result.winner == player)
             {
                 Assert.IsTrue(player.IsAlive, "Player should be alive.");
                 Assert.IsFalse(goblin.IsAlive, "Goblin should be dead.");
                 
             }
-            else if (result.Winner == goblin)
+            else if (result.winner == goblin)
             {
                 Assert.IsTrue(goblin.IsAlive, "Goblin should be alive.");
                 Assert.IsFalse(player.IsAlive, "Player should be dead.");
@@ -137,7 +137,7 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
             else
                 throw new Exception("Winner should be player or goblin.");
             
-            Assert.Greater(result.Logs.Count, 0, "There should be battle logs.");
+            Assert.Greater(result.logs.Count, 0, "There should be battle logs.");
         }
     }
 }

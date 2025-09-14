@@ -25,10 +25,10 @@ namespace LT_Game.Core.Data.Entities
         }
 
         public override int CalculateDamage() =>
-            CurrentWeapon.Damage + Strength;
+            CurrentWeapon.damage + strength;
 
-        public override string ToString() => $"Player{{Health: {Health}, MaxHealth: {MaxHealth}, " +
-                                             $"Strength: {Strength}, Agility: {Agility},  Endurance: {Endurance}, " +
-                                             $"Weapon: {CurrentWeapon.Name}}}";
+        public override string ToString() => $"Player{{Health: {health}, MaxHealth: {maxHealth}, " +
+                                             $"Strength: {strength}, Agility: {agility},  Endurance: {endurance}, " +
+                                             $"Weapon: {CurrentWeapon.name}}}";
     }
 }
