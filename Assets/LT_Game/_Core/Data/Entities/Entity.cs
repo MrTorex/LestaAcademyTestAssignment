@@ -31,7 +31,7 @@ namespace LT_Game.Core.Data.Entities
             effectManager = new EffectManager(this);
         }
 
-        public abstract int CalculateDamage();
+        public abstract DamageResult CalculateDamage();
         
         public void TakeDamage(int amount) => 
             health -= amount;

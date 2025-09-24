@@ -1,4 +1,5 @@
 using LT_Game.Core.Data.Entities;
+using LT_Game.Core.Data.Enums;
 
 namespace LT_Game.Core.Data.Effects.Concrete
 {
@@ -9,13 +10,13 @@ namespace LT_Game.Core.Data.Effects.Concrete
         public WarriorFirstStrikeEffect() =>
             duration = -1;
 
-        public override int OnAttack(Entity owner, Entity target, int damage)
+        public override DamageResult OnAttack(Entity owner, Entity target, DamageResult damage)
         {
-            if (!_firstTurn)
-                return damage;
+            if (!_firstTurn || owner is not Player player) return damage;
             
             _firstTurn = false;
-            return damage * 2;
+            damage.Add(DamageType.Critical, player.CurrentWeapon.damage);
+            return damage;
         }
     }
 }

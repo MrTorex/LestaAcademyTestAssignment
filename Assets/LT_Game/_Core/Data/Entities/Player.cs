@@ -24,8 +24,13 @@ namespace LT_Game.Core.Data.Entities
             ClassBonusService.ApplyLevelBonus(classType, newLevel, this);
         }
 
-        public override int CalculateDamage() =>
-            CurrentWeapon.damage + strength;
+        public override DamageResult CalculateDamage()
+        {
+            var result = new DamageResult();
+            result.Add(CurrentWeapon.weaponDamageType, CurrentWeapon.damage);
+            result.Add(DamageType.Physical, strength);
+            return result;
+        }
 
         public override string ToString() => $"Player{{Health: {health}, MaxHealth: {maxHealth}, " +
                                              $"Strength: {strength}, Agility: {agility},  Endurance: {endurance}, " +

@@ -4,6 +4,10 @@ namespace LT_Game.Core.Data.Enums
     {
         Slashing,
         Bludgeoning,
-        Piercing
+        Piercing,
+        Physical,
+        Shield,
+        Poisoning,
+        Critical
     }
 }

@@ -55,7 +55,7 @@ namespace LT_Game.Core.GameSystems
                 var damage = attacker.CalculateDamage();
                 damage = attacker.effectManager.ModifyAttackDamage(defender, damage);
                 damage = defender.effectManager.ModifyDefenseDamage(attacker, damage);
-                defender.TakeDamage(damage);
+                defender.TakeDamage(damage.ResultDamage);
                 
                 result.logs.Add($"{GetEntityName(attacker)} damaged {GetEntityName(defender)}: {damage}. " +
                                 $"{GetEntityName(defender)} HP: {defender.health}");

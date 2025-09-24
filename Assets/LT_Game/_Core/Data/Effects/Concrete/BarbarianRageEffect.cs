@@ -1,4 +1,5 @@
 using LT_Game.Core.Data.Entities;
+using LT_Game.Core.Data.Enums;
 
 namespace LT_Game.Core.Data.Effects.Concrete
 {
@@ -13,12 +14,17 @@ namespace LT_Game.Core.Data.Effects.Concrete
         public BarbarianRageEffect() => 
             duration = -1;
 
-        public override int OnAttack(Entity owner, Entity defender, int damage)
+        public override DamageResult OnAttack(Entity owner, Entity defender, DamageResult damage)
         {
-            if (_bonusMoveCounter <= 0) return damage - DamagePenalty;
+            if (_bonusMoveCounter <= 0)
+            {
+                damage.damageByType[DamageType.Physical] -= DamagePenalty;
+                return damage;
+            }
             
             _bonusMoveCounter--;
-            return damage + DamageBonus;
+            damage.damageByType[DamageType.Physical] += DamageBonus;
+            return damage;
         }
     }
 }

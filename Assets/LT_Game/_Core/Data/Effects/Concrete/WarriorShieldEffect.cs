@@ -1,5 +1,6 @@
 using System;
 using LT_Game.Core.Data.Entities;
+using LT_Game.Core.Data.Enums;
 
 namespace LT_Game.Core.Data.Effects.Concrete
 {
@@ -10,9 +11,13 @@ namespace LT_Game.Core.Data.Effects.Concrete
         public WarriorShieldEffect() => 
             duration = -1;
 
-        public override int OnDefend(Entity owner, Entity attacker, int damage) =>
-            owner.strength > attacker.strength 
-                ? Math.Max(0, damage - DamageReduction) 
-                : damage;
+        public override DamageResult OnDefend(Entity owner, Entity attacker, DamageResult damage)
+        {
+            if (owner.strength > attacker.strength)
+                damage.Add(DamageType.Shield, damage.ResultDamage - owner.endurance >= 0 
+                    ? -DamageReduction 
+                    : -damage.ResultDamage);
+            return damage;
+        }
     }
 }

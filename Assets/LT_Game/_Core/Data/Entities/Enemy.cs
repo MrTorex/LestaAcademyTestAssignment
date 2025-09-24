@@ -1,4 +1,5 @@
 using System;
+using LT_Game.Core.Data.Enums;
 
 namespace LT_Game.Core.Data.Entities
 {
@@ -19,8 +20,12 @@ namespace LT_Game.Core.Data.Entities
             this.specialAbility = specialAbility;
         }
 
-        public override int CalculateDamage() => 
-            baseDamage + strength;
+        public override DamageResult CalculateDamage()
+        {
+            var result = new DamageResult();
+            result.Add(DamageType.Physical, baseDamage);
+            return result;
+        }
 
         public override string ToString() => $"Enemy{{Name: {name}, Health: {health}, MaxHealth: {maxHealth}, BaseDamage: {baseDamage}, " +
                                              $"Strength: {strength}, Agility: {agility},  Endurance: {endurance}, " +

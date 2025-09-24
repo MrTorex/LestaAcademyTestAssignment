@@ -16,10 +16,10 @@ namespace LT_Game.Core.Data.Effects
             if (duration < 0) owner.effectManager.Remove(this);
         }
 
-        public virtual int OnAttack(Entity owner, Entity target, int damage) =>
+        public virtual DamageResult OnAttack(Entity owner, Entity target, DamageResult damage) =>
             damage;
 
-        public virtual int OnDefend(Entity owner, Entity target, int damage) => 
+        public virtual DamageResult OnDefend(Entity owner, Entity target, DamageResult damage) => 
             damage;
         
         public virtual void OnRemove(Entity target) { }

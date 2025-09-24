@@ -7,8 +7,8 @@ namespace LT_Game.Core.Data.Effects
         int duration { get; }
         void OnApply(Entity target);
         void OnTurnStart(Entity owner);
-        int OnAttack(Entity owner, Entity target, int damage);
-        int OnDefend(Entity owner, Entity target, int damage);
+        DamageResult OnAttack(Entity owner, Entity target, DamageResult damage);
+        DamageResult OnDefend(Entity owner, Entity target, DamageResult damage);
         void OnRemove(Entity target);
     }
 }

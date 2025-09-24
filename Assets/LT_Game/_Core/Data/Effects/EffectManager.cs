@@ -30,11 +30,11 @@ namespace LT_Game.Core.Data.Effects
                 effect.OnTurnStart(_owner);
         }
 
-        public int ModifyAttackDamage(Entity target, int baseDamage) => 
+        public DamageResult ModifyAttackDamage(Entity target, DamageResult baseDamage) => 
             _activeEffects.Aggregate(baseDamage, (current, effect) => 
                 effect.OnAttack(_owner, target, current));
         
-        public int ModifyDefenseDamage(Entity attacker, int incomingDamage) =>
+        public DamageResult ModifyDefenseDamage(Entity attacker, DamageResult incomingDamage) =>
             _activeEffects.Aggregate(incomingDamage, (current, effect) =>
                 effect.OnDefend(_owner, attacker, current));
     }

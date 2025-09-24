@@ -35,8 +35,8 @@ namespace LT_Game.Core.GameSystems
                 case 2:
                     player.effectManager.Add(new AgilityBuffEffect(1, -1));
                     break;
-                case 3:
-                    Console.WriteLine("Яд");
+                case 3: 
+                    player.effectManager.Add(new RoguePoisonEffect());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(level), level, null);
@@ -65,11 +65,11 @@ namespace LT_Game.Core.GameSystems
         {
             switch (level)
             {
-                case 1:
-                    Console.WriteLine("Ярость");
+                case 1: 
+                    player.effectManager.Add(new BarbarianRageEffect());
                     break;
-                case 2:
-                    Console.WriteLine("Каменная кожа");
+                case 2: 
+                    player.effectManager.Add(new BarbarianStoneSkinEffect());
                     break;
                 case 3:
                     player.effectManager.Add(new EnduranceBuffEffect(1, -1));

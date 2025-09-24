@@ -1,4 +1,5 @@
 using LT_Game.Core.Data.Entities;
+using LT_Game.Core.Data.Enums;
 
 namespace LT_Game.Core.Data.Effects.Concrete
 {
@@ -9,9 +10,11 @@ namespace LT_Game.Core.Data.Effects.Concrete
         public RogueStealthAttackEffect() =>
             duration = -1;
 
-        public override int OnAttack(Entity owner, Entity defender, int damage) =>
-            owner.agility > defender.agility
-            ?  damage + DamageBonus
-            : damage;
+        public override DamageResult OnAttack(Entity owner, Entity defender, DamageResult damage)
+        {
+            if (owner.agility > defender.agility)
+                damage.damageByType[DamageType.Physical] += DamageBonus;
+            return damage;
+        }
     }
 }
