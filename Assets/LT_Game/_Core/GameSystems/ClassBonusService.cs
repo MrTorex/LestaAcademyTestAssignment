@@ -1,4 +1,5 @@
 using System;
+using LT_Game.Core.Data.Effects.Concrete;
 using LT_Game.Core.Data.Entities;
 using LT_Game.Core.Data.Enums;
 
@@ -29,11 +30,10 @@ namespace LT_Game.Core.GameSystems
             switch (level)
             {
                 case 1:
-                    Console.WriteLine("Скрытая атака");
+                    player.effectManager.Add(new RogueStealthAttackEffect());
                     break;
                 case 2:
-                    player.agility++;
-                    Console.WriteLine("Ловкость +1");
+                    player.effectManager.Add(new AgilityBuffEffect(1, -1));
                     break;
                 case 3:
                     Console.WriteLine("Яд");
@@ -48,14 +48,13 @@ namespace LT_Game.Core.GameSystems
             switch (level)
             {
                 case 1:
-                    Console.WriteLine("Порыв к действию");
+                    player.effectManager.Add(new WarriorFirstStrikeEffect());
                     break;
                 case 2:
-                    Console.WriteLine("Щит");
+                    player.effectManager.Add(new WarriorShieldEffect());
                     break;
                 case 3:
-                    player.strength++;
-                    Console.WriteLine("Сила +1");
+                    player.effectManager.Add(new StrengthBuffEffect(1, -1));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(level), level, null);
@@ -73,8 +72,7 @@ namespace LT_Game.Core.GameSystems
                     Console.WriteLine("Каменная кожа");
                     break;
                 case 3:
-                    player.endurance++;
-                    Console.WriteLine("Выносливость +1");
+                    player.effectManager.Add(new EnduranceBuffEffect(1, -1));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(level), level, null);

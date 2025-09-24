@@ -29,6 +29,9 @@ namespace LT_Game.Core.GameSystems
             
             while (player.IsAlive && enemy.IsAlive)
             {
+                player.effectManager.ProcessTurnStart();
+                enemy.effectManager.ProcessTurnStart();
+                
                 ProcessAttack(first, second, result);
                 if (!second.IsAlive) break;
                 
@@ -50,6 +53,8 @@ namespace LT_Game.Core.GameSystems
             if (CheckHit(attacker, defender))
             {
                 var damage = attacker.CalculateDamage();
+                damage = attacker.effectManager.ModifyAttackDamage(defender, damage);
+                damage = defender.effectManager.ModifyDefenseDamage(attacker, damage);
                 defender.TakeDamage(damage);
                 
                 result.logs.Add($"{GetEntityName(attacker)} damaged {GetEntityName(defender)}: {damage}. " +

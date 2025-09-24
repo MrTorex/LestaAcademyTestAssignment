@@ -26,7 +26,7 @@ namespace LT_Game.Core.Data.Effects
 
         public void ProcessTurnStart()
         {
-            foreach (var effect in _activeEffects)
+            foreach (var effect in _activeEffects.ToList())
                 effect.OnTurnStart(_owner);
         }
 
@@ -34,7 +34,7 @@ namespace LT_Game.Core.Data.Effects
             _activeEffects.Aggregate(baseDamage, (current, effect) => 
                 effect.OnAttack(_owner, target, current));
         
-        public int ModifyDefenceDamage(Entity attacker, int incomingDamage) =>
+        public int ModifyDefenseDamage(Entity attacker, int incomingDamage) =>
             _activeEffects.Aggregate(incomingDamage, (current, effect) =>
                 effect.OnDefend(_owner, attacker, current));
     }
