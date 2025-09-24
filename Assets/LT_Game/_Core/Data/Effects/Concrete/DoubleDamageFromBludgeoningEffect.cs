@@ -10,8 +10,9 @@ namespace LT_Game.Core.Data.Effects.Concrete
         
         public override DamageResult OnDefend(Entity owner, Entity attacker, DamageResult damage)
         {
-            damage.damageByTypeModifiers[DamageType.Bludgeoning] = 2;
-            return damage;
+            var result = damage.Clone();
+            result.damageByTypeModifiers[DamageType.Bludgeoning] = 2;
+            return result;
         }
     }
 }

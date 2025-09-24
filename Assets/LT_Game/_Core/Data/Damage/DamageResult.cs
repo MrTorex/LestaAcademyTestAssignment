@@ -18,7 +18,7 @@ namespace LT_Game.Core.Data
                 foreach (var (type, damage) in damageByType)
                 {
                     var modifier = damageByTypeModifiers.GetValueOrDefault(type, 1);
-                    result.Add(type, damage);
+                    result.Add(type, damage * modifier);
                 }
                 
                 return result;
@@ -30,14 +30,20 @@ namespace LT_Game.Core.Data
 
         public void Add(DamageType type, int damage) =>
             damageByType.Add(type, damage);
+        
+        public DamageResult Clone()
+        {
+            var clone = new DamageResult();
+            foreach (var kvp in damageByType)
+                clone.damageByType[kvp.Key] = kvp.Value;
+            return clone;
+        }
 
         public override string ToString()
         {
             var result = "";
             foreach (var (type, damage) in damageByType)
-            {
                 result += $"{type}: {damage}; ";
-            }
             result += $"Total: {ResultDamage}";
             return result;
         }

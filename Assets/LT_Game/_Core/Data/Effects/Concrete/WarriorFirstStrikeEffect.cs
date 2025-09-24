@@ -15,11 +15,12 @@ namespace LT_Game.Core.Data.Effects.Concrete
 
         public override DamageResult OnAttack(Entity owner, Entity target, DamageResult damage)
         {
-            if (!_firstTurn || owner is not Player player) return damage;
+            var result = damage.Clone();
+            if (!_firstTurn || owner is not Player player) return result;
             
             _firstTurn = false;
-            damage.Add(DamageType.Critical, player.CurrentWeapon.damage);
-            return damage;
+            result.Add(DamageType.Critical, player.CurrentWeapon.damage);
+            return result;
         }
     }
 }

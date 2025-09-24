@@ -13,11 +13,15 @@ namespace LT_Game.Core.Data.Effects.Concrete
             duration = -1;
         }
 
+        public override void OnTurnStart(Entity owner) => 
+            _moveCounter++;
+
         public override DamageResult OnAttack(Entity owner, Entity target, DamageResult damage)
         {
+            var result = damage.Clone();
             _moveCounter++;
-            damage.Add(DamageType.Poisoning, _moveCounter - 1);
-            return damage;
+            result.Add(DamageType.Poisoning, _moveCounter - 1);
+            return result;
         }
     }
 }

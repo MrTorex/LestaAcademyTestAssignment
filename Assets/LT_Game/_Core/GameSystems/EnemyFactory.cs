@@ -72,7 +72,7 @@ namespace LT_Game.Core.GameSystems
                 agility: 3,
                 endurance: 3,
                 baseDamage: 4,
-                lootWeapon: WeaponFactory.CreateAxe(),
+                lootWeapon: WeaponFactory.CreateLegendarySword(),
                 specialAbility: new FireBreathEffect()
                 );
     }

@@ -13,13 +13,16 @@ namespace LT_Game.Core.Data.Effects.Concrete
             description = $"Fire Breath: Every 3rd turn, {FireDamageBonus} fire damage";
             duration = -1;
         }
+
+        public override void OnTurnStart(Entity owner) => 
+            _moveCounter++;
         
         public override DamageResult OnAttack(Entity owner, Entity target, DamageResult damage)
         {
-            _moveCounter++;
+            var result = damage.Clone();
             if (_moveCounter % 3 == 0)
-                damage.Add(DamageType.Fire, FireDamageBonus);
-            return damage;
+                result.Add(DamageType.Fire, FireDamageBonus);
+            return result;
         }
     }
 }

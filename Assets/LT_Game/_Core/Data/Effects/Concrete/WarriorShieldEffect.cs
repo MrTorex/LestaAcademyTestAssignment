@@ -16,11 +16,12 @@ namespace LT_Game.Core.Data.Effects.Concrete
 
         public override DamageResult OnDefend(Entity owner, Entity attacker, DamageResult damage)
         {
+            var result = damage.Clone();
             if (owner.strength > attacker.strength)
-                damage.Add(DamageType.Shield, damage.ResultDamage - owner.endurance >= 0 
+                result.Add(DamageType.Shield, damage.ResultDamage - owner.endurance >= 0 
                     ? -DamageReduction 
-                    : -damage.ResultDamage);
-            return damage;
+                    : -result.ResultDamage);
+            return result;
         }
     }
 }

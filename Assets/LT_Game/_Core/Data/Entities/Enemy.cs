@@ -14,7 +14,8 @@ namespace LT_Game.Core.Data.Entities
         public Enemy(string name, int baseHealth, int strength, int agility, int endurance, int baseDamage, Weapon lootWeapon, IEffect specialAbility = null) :
             base(baseHealth, strength, agility, endurance)
         {
-            effectManager.Add(specialAbility);
+            if(specialAbility != null)
+                effectManager.Add(specialAbility);
             this.lootWeapon = lootWeapon ?? throw new ArgumentException("LootWeapon cannot be null", nameof(lootWeapon));
             if (!string.IsNullOrWhiteSpace(name))
                 this.name = name;

@@ -15,9 +15,10 @@ namespace LT_Game.Core.Data.Effects.Concrete
 
         public override DamageResult OnAttack(Entity owner, Entity defender, DamageResult damage)
         {
+            var result = damage.Clone();
             if (owner.agility > defender.agility)
-                damage.damageByType[DamageType.Physical] += DamageBonus;
-            return damage;
+                result.damageByType[DamageType.Physical] += DamageBonus;
+            return result;
         }
     }
 }

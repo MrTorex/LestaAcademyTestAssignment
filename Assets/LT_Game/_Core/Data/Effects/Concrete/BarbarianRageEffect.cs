@@ -19,15 +19,16 @@ namespace LT_Game.Core.Data.Effects.Concrete
 
         public override DamageResult OnAttack(Entity owner, Entity defender, DamageResult damage)
         {
+            var result = damage.Clone();
             if (_bonusMoveCounter <= 0)
             {
-                damage.damageByType[DamageType.Physical] -= DamagePenalty;
-                return damage;
+                result.damageByType[DamageType.Physical] -= DamagePenalty;
+                return result;
             }
             
             _bonusMoveCounter--;
-            damage.damageByType[DamageType.Physical] += DamageBonus;
-            return damage;
+            result.damageByType[DamageType.Physical] += DamageBonus;
+            return result;
         }
     }
 }
