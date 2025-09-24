@@ -1,4 +1,5 @@
 using System;
+using LT_Game.Core.Data.Effects;
 
 namespace LT_Game.Core.Data.Entities
 {
@@ -9,6 +10,7 @@ namespace LT_Game.Core.Data.Entities
         public int strength { get; set; }
         public int agility { get; set; }
         public int endurance { get; set; }
+        public EffectManager effectManager { get; }
 
         protected Entity(int baseHealth, int strength, int agility, int endurance)
         {
@@ -26,6 +28,7 @@ namespace LT_Game.Core.Data.Entities
             this.endurance = endurance;
             maxHealth = baseHealth;
             health = maxHealth;
+            effectManager = new EffectManager(this);
         }
 
         public abstract int CalculateDamage();
