@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using LT_Game.Core.Data.Enums;
 using LT_Game.Core.GameSystems;
 
@@ -32,8 +33,15 @@ namespace LT_Game.Core.Data.Entities
             return result;
         }
 
-        public override string ToString() => $"Player{{Health: {health}, MaxHealth: {maxHealth}, " +
+        public override string ToString()
+        {
+            var result = $"Player{{Health: {health}, MaxHealth: {maxHealth}, " +
                                              $"Strength: {strength}, Agility: {agility},  Endurance: {endurance}, " +
-                                             $"Weapon: {CurrentWeapon.name}}}";
+                                             $"Weapon: {CurrentWeapon.name}, Active Effects: ";
+
+            effectManager.ActiveEffects.Aggregate(result, (current, effect) => current + $"{effect}; ");
+            result += "}}";
+            return result;
+        }
     }
 }

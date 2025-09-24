@@ -11,8 +11,11 @@ namespace LT_Game.Core.Data.Effects.Concrete
         
         private int _bonusMoveCounter = 3;
 
-        public BarbarianRageEffect() => 
+        public BarbarianRageEffect()
+        {
+            description = "Barbarian Rage: +2 damage (first 3 turns), then -1";
             duration = -1;
+        }
 
         public override DamageResult OnAttack(Entity owner, Entity defender, DamageResult damage)
         {

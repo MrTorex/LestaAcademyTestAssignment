@@ -8,6 +8,7 @@ namespace LT_Game.Core.Data.Effects.Concrete
         
         public EnduranceBuffEffect(int enduranceBonus, int bonusDuration)
         {
+            description = $"Endurance +{enduranceBonus}";
             _enduranceBonus = enduranceBonus;
             duration = bonusDuration;
         }

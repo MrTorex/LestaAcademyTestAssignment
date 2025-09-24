@@ -8,6 +8,7 @@ namespace LT_Game.Core.Data.Effects.Concrete
         
         public StrengthBuffEffect(int strengthBonus, int bonusDuration)
         {
+            description = $"Strength +{strengthBonus}";
             _strengthBonus = strengthBonus;
             duration = bonusDuration;
         }

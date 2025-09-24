@@ -7,9 +7,12 @@ namespace LT_Game.Core.Data.Effects.Concrete
     public class WarriorShieldEffect : StatusEffect
     {
         private const int DamageReduction = 3;
-        
-        public WarriorShieldEffect() => 
+
+        public WarriorShieldEffect()
+        {
+            description = "Shield: -3 damage if strength higher than attacker";
             duration = -1;
+        }
 
         public override DamageResult OnDefend(Entity owner, Entity attacker, DamageResult damage)
         {

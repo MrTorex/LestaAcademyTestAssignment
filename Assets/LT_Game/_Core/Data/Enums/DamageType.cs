@@ -8,6 +8,7 @@ namespace LT_Game.Core.Data.Enums
         Physical,
         Shield,
         Poisoning,
-        Critical
+        Critical,
+        Fire
     }
 }

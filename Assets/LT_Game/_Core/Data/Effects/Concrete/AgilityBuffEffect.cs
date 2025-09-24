@@ -8,6 +8,7 @@ namespace LT_Game.Core.Data.Effects.Concrete
         
         public AgilityBuffEffect(int agilityBonus, int bonusDuration)
         {
+            description = $"Agility +{agilityBonus}";
             _agilityBonus = agilityBonus;
             duration = bonusDuration;
         }

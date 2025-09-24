@@ -1,3 +1,4 @@
+using LT_Game.Core.Data.Effects.Concrete;
 using LT_Game.Core.Data.Entities;
 
 namespace LT_Game.Core.GameSystems
@@ -12,8 +13,7 @@ namespace LT_Game.Core.GameSystems
                 agility: 1,
                 endurance: 1,
                 baseDamage: 2,
-                lootWeapon: WeaponFactory.CreateDagger(),
-                specialAbility: ""
+                lootWeapon: WeaponFactory.CreateDagger()
                 );
         
         public static Enemy CreateSkeleton() =>
@@ -25,7 +25,7 @@ namespace LT_Game.Core.GameSystems
                 endurance: 2,
                 baseDamage: 2,
                 lootWeapon: WeaponFactory.CreateClub(),
-                specialAbility: "Получает вдвое больше урона от дробящего оружия"
+                specialAbility: new DoubleDamageFromBludgeoningEffect()
                 );
         
         public static Enemy CreateSlime() =>
@@ -37,7 +37,7 @@ namespace LT_Game.Core.GameSystems
                 endurance: 2,
                 baseDamage: 1,
                 lootWeapon: WeaponFactory.CreateSpear(),
-                specialAbility: "Рубящее оружие не наносит урона"
+                specialAbility: new NoDamageFromSlashingEffect()
                 );
         
         public static Enemy CreateGhost() =>
@@ -49,7 +49,7 @@ namespace LT_Game.Core.GameSystems
                 endurance: 1,
                 baseDamage: 3,
                 lootWeapon: WeaponFactory.CreateSword(),
-                specialAbility: "Скрытая атака"
+                specialAbility: new RogueStealthAttackEffect()
                 );
         
         public static Enemy CreateGolem() =>
@@ -61,7 +61,7 @@ namespace LT_Game.Core.GameSystems
                 endurance: 3,
                 baseDamage: 1,
                 lootWeapon: WeaponFactory.CreateAxe(),
-                specialAbility: "Каменная кожа"
+                specialAbility: new BarbarianStoneSkinEffect()
                 );
         
         public static Enemy CreateDragon() =>
@@ -73,7 +73,7 @@ namespace LT_Game.Core.GameSystems
                 endurance: 3,
                 baseDamage: 4,
                 lootWeapon: WeaponFactory.CreateAxe(),
-                specialAbility: "Каждый 3-ий ход дышит огнём, нанося дополнительно 3 урона"
+                specialAbility: new FireBreathEffect()
                 );
     }
 }

@@ -7,8 +7,11 @@ namespace LT_Game.Core.Data.Effects.Concrete
     {
         private bool _firstTurn = true;
 
-        public WarriorFirstStrikeEffect() =>
+        public WarriorFirstStrikeEffect()
+        {
+            description = "First Strike: double weapon damage on first turn";
             duration = -1;
+        }
 
         public override DamageResult OnAttack(Entity owner, Entity target, DamageResult damage)
         {

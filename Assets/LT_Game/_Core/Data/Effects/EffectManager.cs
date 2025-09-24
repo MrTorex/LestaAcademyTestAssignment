@@ -7,6 +7,7 @@ namespace LT_Game.Core.Data.Effects
     public class EffectManager
     {
         private readonly List<IEffect> _activeEffects = new();
+        public List<IEffect> ActiveEffects => _activeEffects;
         private readonly Entity _owner;
 
         public EffectManager(Entity owner) =>

@@ -31,8 +31,7 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
                 agility: 5,
                 endurance: 5,
                 baseDamage: 3,
-                lootWeapon: _enemyWeapon,
-                specialAbility: ""
+                lootWeapon: _enemyWeapon
                 );
     
             var hits = 0;
@@ -64,8 +63,7 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
                 agility: 1,
                 endurance: 1,
                 baseDamage: 2,
-                lootWeapon: _enemyWeapon,
-                specialAbility: ""
+                lootWeapon: _enemyWeapon
                 );
     
             Assert.IsTrue(CombatService.CheckHit(player, enemy));
@@ -89,8 +87,7 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
                 agility: 1,
                 endurance: 1,
                 baseDamage: 2,
-                lootWeapon: _enemyWeapon,
-                specialAbility: ""
+                lootWeapon: _enemyWeapon
                 );
 
             Assert.IsFalse(CombatService.CheckHit(enemy, player));
@@ -114,8 +111,7 @@ namespace LT_Game.Tests.EditMode.Core.GameSystems
                 agility: 1,
                 endurance: 1,
                 baseDamage: 2,
-                lootWeapon: _enemyWeapon,
-                specialAbility: ""
+                lootWeapon: _enemyWeapon
             );
     
             var result = CombatService.SimulateBattle(player, goblin);

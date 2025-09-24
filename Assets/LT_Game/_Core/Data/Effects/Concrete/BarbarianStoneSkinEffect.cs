@@ -5,8 +5,11 @@ namespace LT_Game.Core.Data.Effects.Concrete
 {
     public class BarbarianStoneSkinEffect : StatusEffect
     {
-        public BarbarianStoneSkinEffect() => 
+        public BarbarianStoneSkinEffect()
+        {
+            description = "Stone Skin: damage reduction equal to Endurance";
             duration = -1;
+        }
 
         public override DamageResult OnDefend(Entity owner, Entity attacker, DamageResult damage)
         {

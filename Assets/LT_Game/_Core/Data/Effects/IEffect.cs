@@ -5,6 +5,7 @@ namespace LT_Game.Core.Data.Effects
     public interface IEffect
     {
         int duration { get; }
+        string description { get; }
         void OnApply(Entity target);
         void OnTurnStart(Entity owner);
         DamageResult OnAttack(Entity owner, Entity target, DamageResult damage);

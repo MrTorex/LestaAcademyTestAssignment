@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using LT_Game.Core.Data.Effects;
 
 namespace LT_Game.Core.Data.Entities
@@ -42,7 +43,12 @@ namespace LT_Game.Core.Data.Entities
         public void HealToFull() => 
             health = maxHealth;
 
-        public override string ToString() => 
-            $"Entity{{Health: {health}, MaxHealth: {maxHealth}, Strength: {strength}, Agility: {agility},  Endurance: {endurance}}}";
+        public override string ToString()
+        {
+            var result = $"Entity{{Health: {health}, MaxHealth: {maxHealth}, Strength: {strength}, Agility: {agility}, " +
+                         $"Endurance: {endurance}, Active Effects: ";
+
+            return effectManager.ActiveEffects.Aggregate(result, (current, effect) => current + $"{effect}; ");
+        }
     }
 }
