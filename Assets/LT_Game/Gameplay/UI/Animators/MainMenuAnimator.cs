@@ -13,7 +13,7 @@ namespace LT_Game.Gameplay.UI.Animators
         [SerializeField] private Image fadeEffectImage;
         private const string AnimationId = "MainMenu";
 
-        private void Start()
+        public void MainMenuLoop()
         {
             ScaleBackground();
             MoveGameName();

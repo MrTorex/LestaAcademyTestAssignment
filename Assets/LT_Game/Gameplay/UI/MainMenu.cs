@@ -15,6 +15,7 @@ namespace LT_Game.Gameplay.UI
         private void Start()
         {
             playButton.interactable = false;
+            animator.MainMenuLoop();
             animator.FadeInEffect().OnComplete(() =>
             {
                 playButton.onClick.AddListener(OnPlayButtonClick);

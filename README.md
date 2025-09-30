@@ -1,2 +1,12 @@
 # LestaAcademyTestAssignment
 2D turn-based auto-battler game prototype developed in Unity as a test assignment for Lesta Academy
+
+---
+
+## 3rd-party assets used in project:
+
+- Font: [Hardpixel](https://fonts-online.ru/fonts/hardpixel) by [Jovanny Lemonad](https://fonts-online.ru/designers/jovanny-lemonad)
+- Backgrounds: [Battle / RPG Backgrounds](https://arexxuru.itch.io/battle-rpg-backgrounds) by [GNDLF The Maker](https://arexxuru.itch.io/)
+- Play Button: [Free Pixel Art Button Pack](https://ok-lavender.itch.io/free-pixel-art-button-pack) by [ok_lavender](https://ok-lavender.itch.io/)
+- Healthbar Border: [Custom Border and Panels Menu All Part](https://bdragon1727.itch.io/custom-border-and-panels-menu-all-part) by [BDragon1727](https://bdragon1727.itch.io/)
+- Animations engine: [DOTween](https://dotween.demigiant.com/) by [Demigiant](https://demigiant.com/)
