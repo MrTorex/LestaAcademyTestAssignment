@@ -18,7 +18,7 @@ namespace LT_Game.Core.Data.Effects.Concrete
         {
             var result = damage.Clone();
             if (owner.strength > attacker.strength)
-                result.Add(DamageType.Shield, damage.ResultDamage - owner.endurance >= 0 
+                result.Add(DamageType.Shield, result.ResultDamage - DamageReduction >= 0 
                     ? -DamageReduction 
                     : -result.ResultDamage);
             return result;

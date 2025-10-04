@@ -2457,6 +2457,8 @@ GameObject:
   - component: {fileID: 1434836347}
   - component: {fileID: 1434836350}
   - component: {fileID: 1434836349}
+  - component: {fileID: 1434836352}
+  - component: {fileID: 1434836351}
   m_Layer: 5
   m_Name: ClassTypeSelector
   m_TagString: Untagged
@@ -2523,6 +2525,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434836346}
   m_CullTransparentMesh: 1
+--- !u!114 &1434836351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434836346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46fef953e79407295792ccce18a10c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Animators.ClassTypeSelectorAnimator
+--- !u!114 &1434836352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434836346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12a832ae2964f9899e68fc9bd85b677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.ClassTypeSelector
+  classTypeRogueButton: {fileID: 1996733584}
+  classTypeWarriorButton: {fileID: 311153673}
+  classTypeBarbarianButton: {fileID: 74057909}
 --- !u!1 &1472115551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,9 +3313,7 @@ MonoBehaviour:
   enemyHealthBarText: {fileID: 505333010}
   playerImage: {fileID: 677770486}
   enemyImage: {fileID: 255921780}
-  classTypeRogueButton: {fileID: 1996733584}
-  classTypeWarriorButton: {fileID: 311153673}
-  classTypeBarbarianButton: {fileID: 74057909}
+  classTypeSelector: {fileID: 1434836352}
   nextTurnButton: {fileID: 970665258}
 --- !u!1 &2139024800
 GameObject:

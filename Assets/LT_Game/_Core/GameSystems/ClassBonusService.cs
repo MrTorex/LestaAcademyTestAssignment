@@ -27,6 +27,8 @@ namespace LT_Game.Core.GameSystems
         
         private static void ApplyRogueBonus(int level, Player player)
         {
+            player.IncreaseMaxHealth(4);
+            
             switch (level)
             {
                 case 1:
@@ -45,6 +47,8 @@ namespace LT_Game.Core.GameSystems
         
         private static void ApplyWarriorBonus(int level, Player player)
         {
+            player.IncreaseMaxHealth(5);
+            
             switch (level)
             {
                 case 1:
@@ -63,6 +67,8 @@ namespace LT_Game.Core.GameSystems
 
         private static void ApplyBarbarianBonus(int level, Player player)
         {
+            player.IncreaseMaxHealth(6);
+            
             switch (level)
             {
                 case 1: 
@@ -73,6 +79,7 @@ namespace LT_Game.Core.GameSystems
                     break;
                 case 3:
                     player.effectManager.Add(new EnduranceBuffEffect(1, -1));
+                    player.IncreaseMaxHealth(1);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(level), level, null);

@@ -42,6 +42,12 @@ namespace LT_Game.Core.Data.Entities
         
         public void HealToFull() => 
             health = maxHealth;
+        
+        public void IncreaseMaxHealth(int amount)
+        {
+            maxHealth += amount;
+            health += amount;
+        }
 
         public override string ToString()
         {

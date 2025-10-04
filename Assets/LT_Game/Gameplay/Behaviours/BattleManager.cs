@@ -1,9 +1,9 @@
 using LT_Game.Core.Data.Entities;
 using LT_Game.Core.Data.Enums;
 using LT_Game.Core.GameSystems;
+using LT_Game.Gameplay.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = System.Random;
 
@@ -20,15 +20,14 @@ namespace LT_Game.Gameplay.Behaviours
         [SerializeField] private Image playerImage;
         [SerializeField] private Image enemyImage;
         
-        [SerializeField] private Button classTypeRogueButton;
-        [SerializeField] private Button classTypeWarriorButton;
-        [SerializeField] private Button classTypeBarbarianButton;
+        [SerializeField] private ClassTypeSelector classTypeSelector;
         
         [SerializeField] private Button nextTurnButton;
         
         private Player _player;
         private Enemy _enemy;
         private CombatService.BattleState _battleState;
+        private bool _isFirstBattle = true;
         private int _battlesWon = 0;
 
         private readonly Random _random = new();
@@ -36,15 +35,19 @@ namespace LT_Game.Gameplay.Behaviours
         private void Start()
         {
             nextTurnButton.onClick.AddListener(OnNextTurn);
-            classTypeRogueButton.onClick.AddListener(() => OnClassTypeButtonClicked(ClassType.Rogue));
-            classTypeWarriorButton.onClick.AddListener(() => OnClassTypeButtonClicked(ClassType.Warrior));
-            classTypeBarbarianButton.onClick.AddListener(() => OnClassTypeButtonClicked(ClassType.Barbarian));
-            StartNewBattle();
+            
+            classTypeSelector.ClassTypeRogueButton.onClick.
+                AddListener(() => OnClassTypeButtonClicked(ClassType.Rogue));
+            classTypeSelector.ClassTypeWarriorButton.onClick.
+                AddListener(() => OnClassTypeButtonClicked(ClassType.Warrior));
+            classTypeSelector.ClassTypeBarbarianButton.onClick.
+                AddListener(() => OnClassTypeButtonClicked(ClassType.Barbarian));
+            
+            classTypeSelector.Show();
         }
 
         private void StartNewBattle()
         {
-            _player = GameConfig.CreateInitialPlayer(_random, ClassType.Rogue);
             _enemy = GameConfig.GetRandomEnemy(_random);
             
             _battleState = CombatService.CreateBattle(_player, _enemy);
@@ -78,19 +81,41 @@ namespace LT_Game.Gameplay.Behaviours
             {
                 _battlesWon++;
                 _player.HealToFull();
+                
         
-                /*if (_battlesWon >= GameConfig.VictoriesToWin)
-                    //ShowWinScreen();
+                if (_battlesWon >= GameConfig.VictoriesToWin)
+                    ShowWinScreen();
                 else
-                    ShowLevelUpScreen();*/
+                    classTypeSelector.Show();
             }
-            /*else
-                ShowGameOver();*/
+            else
+                ShowGameOver();
         }
 
         private void OnClassTypeButtonClicked(ClassType classType)
         {
-            _player.LevelUp(classType);
+            if (_isFirstBattle)
+            {
+                _player = GameConfig.CreateInitialPlayer(_random, classType);
+                _isFirstBattle = false;
+            }
+            else
+                _player.LevelUp(classType);
+            
+            classTypeSelector.Hide();
+            StartNewBattle();
+        }
+        
+        private void ShowWinScreen()
+        {
+            // TODO realise win screen
+            Debug.Log("YOU WON THE GAME!");
+        }
+
+        private void ShowGameOver()
+        {
+            // TODO realise game over
+            Debug.Log("GAME OVER");
         }
     }
 }
