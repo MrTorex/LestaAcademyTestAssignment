@@ -20,7 +20,6 @@ namespace LT_Game.Gameplay.UI.Animators
         {
             var attackAnimationSequence = DOTween.Sequence();
             attackAnimationSequence.Append(enemyImage.transform.DOLocalMoveX(_initPos.x - 700, 0.5f));
-            attackAnimationSequence.AppendInterval(0.1f);
             attackAnimationSequence.Append(enemyImage.transform.DOLocalMoveX(_initPos.x, 0.2f));
             return attackAnimationSequence;
         }

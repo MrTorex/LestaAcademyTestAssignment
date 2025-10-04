@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b014069f3f1a84801944d835074ae6a7
+guid: f11a4709430aa6ccda9eaf2cff073325
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6816503905831555222
-    second: PlayButtonClicked_0
+      213: 4979363154352999712
+    second: Rogue_0
+  - first:
+      213: 7921502813010559805
+    second: Rogue_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayButtonClicked_0
+      name: Rogue_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 15
+        width: 350
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6fe8d220d9e661a0800000000000000
-      internalID: -6816503905831555222
+      spriteID: 02d01e638604a1540800000000000000
+      internalID: 4979363154352999712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rogue_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 469
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3380c8a6d4deed60800000000000000
+      internalID: 7921502813010559805
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 10ae9b5c596407686aebdcc9ffee05b3
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayButtonClicked_0: -6816503905831555222
+      Rogue_0: 4979363154352999712
+      Rogue_1: 7921502813010559805
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

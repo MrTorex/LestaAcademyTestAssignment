@@ -68,7 +68,7 @@ namespace LT_Game.Core.GameSystems
                 state.Logs.Add($"{GetEntityName(attacker)} missed by {GetEntityName(defender)}.");
         }
 
-        public static bool CheckHit(Entity attacker, Entity defender) => 
+        private static bool CheckHit(Entity attacker, Entity defender) => 
             Randomizer.Next(1, attacker.agility + defender.agility + 1) > defender.agility;
         
         private static string GetEntityName(Entity entity) =>

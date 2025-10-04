@@ -12,22 +12,21 @@ namespace LT_Game.Gameplay.UI.Animators
 
         private void Start()
         {
-            _initPos = playerImage.transform.localPosition;
+            _initPos = transform.localPosition;
         }
         
         public Tween AttackAnimation()
         {
             var attackAnimationSequence = DOTween.Sequence();
-            attackAnimationSequence.Append(playerImage.transform.DOLocalMoveX(_initPos.x + 700, 0.5f));
-            attackAnimationSequence.AppendInterval(0.1f);
-            attackAnimationSequence.Append(playerImage.transform.DOLocalMoveX(_initPos.x, 0.2f));
+            attackAnimationSequence.Append(transform.DOLocalMoveX(_initPos.x + 700, 0.5f));
+            attackAnimationSequence.Append(transform.DOLocalMoveX(_initPos.x, 0.2f));
             return attackAnimationSequence;
         }
 
         public Tween DamageAnimation()
         {
             var damageAnimationSequence = DOTween.Sequence();
-            damageAnimationSequence.Append(playerImage.transform.DOShakePosition(1, new Vector3(10, 0, 0)));
+            damageAnimationSequence.Append(transform.DOShakePosition(1, new Vector3(10, 0, 0)));
             damageAnimationSequence.AppendInterval(0.5f);
             return damageAnimationSequence;
         }
