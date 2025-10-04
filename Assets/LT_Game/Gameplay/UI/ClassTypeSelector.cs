@@ -29,11 +29,12 @@ namespace LT_Game.Gameplay.UI
         public void Show()
         {
             Enable();
+            _animator.ShowAnimation();
         }
 
         public void Hide()
         {
-            Disable();
+            _animator.HideAnimation().onComplete += Disable;
         }
     }
 }

@@ -1,8 +1,8 @@
+using DG.Tweening;
 using LT_Game.Core.Data.Enums;
 using LT_Game.Core.GameSystems;
 using LT_Game.Gameplay.UI;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = System.Random;
 
 namespace LT_Game.Gameplay.Behaviours
@@ -14,8 +14,6 @@ namespace LT_Game.Gameplay.Behaviours
         
         [SerializeField] private ClassTypeSelector classTypeSelector;
         
-        [SerializeField] private Button nextTurnButton;
-        
         
         private CombatService.BattleState _battleState;
         private bool _isFirstBattle = true;
@@ -25,8 +23,6 @@ namespace LT_Game.Gameplay.Behaviours
         
         private void Start()
         {
-            nextTurnButton.onClick.AddListener(OnNextTurn);
-            
             classTypeSelector.ClassTypeRogueButton.onClick.
                 AddListener(() => OnClassTypeButtonClicked(ClassType.Rogue));
             classTypeSelector.ClassTypeWarriorButton.onClick.
@@ -45,19 +41,31 @@ namespace LT_Game.Gameplay.Behaviours
             _battleState = CombatService.CreateBattle(playerObject.player, enemyObject.enemy);
         
             UpdateUI();
+            ExecuteBattle();
         }
-        
-        public void OnNextTurn()
+
+        private void ExecuteBattle()
         {
-            var battleContinues = CombatService.ExecuteNextTurn(_battleState);
-            print(_battleState.Logs[^1]);
-    
-            UpdateUI();
-    
-            if (!battleContinues)
-                EndBattle();
+            bool battleContinues;
+
+            var attackAnimation = _battleState.CurrentTurnIndex == 0
+                ? playerObject.animator.AttackAnimation()
+                : enemyObject.animator.AttackAnimation();
+
+            attackAnimation.OnComplete(() =>
+            {
+                battleContinues = CombatService.ExecuteNextTurn(_battleState);
+                print(_battleState.Logs[^1]);
+                
+                UpdateUI();
+                
+                if (battleContinues)
+                    ExecuteBattle();
+                else
+                    EndBattle();
+            });
         }
-        
+
         private void UpdateUI()
         {
             playerObject.Healthbar.UpdateValue();
@@ -70,7 +78,6 @@ namespace LT_Game.Gameplay.Behaviours
             {
                 _battlesWon++;
                 playerObject.player.HealToFull();
-                
         
                 if (_battlesWon >= GameConfig.VictoriesToWin)
                     ShowWinScreen();
