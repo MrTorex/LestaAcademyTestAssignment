@@ -30,5 +30,12 @@ namespace LT_Game.Gameplay.UI.Animators
             damageAnimationSequence.AppendInterval(0.5f);
             return damageAnimationSequence;
         }
+        
+        public Tween DeathAnimation()
+        {
+            var deathAnimationSequence = DOTween.Sequence();
+            deathAnimationSequence.Append(transform.DORotate(new Vector3(0,0, 90), 0.2f));
+            return deathAnimationSequence;
+        }
     }
 }

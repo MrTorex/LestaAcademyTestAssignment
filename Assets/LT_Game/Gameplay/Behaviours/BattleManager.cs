@@ -47,6 +47,7 @@ namespace LT_Game.Gameplay.Behaviours
         {
             enemyObject.enemy = GameConfig.GetRandomEnemy(_random);
             enemyObject.Healthbar.owner = enemyObject.enemy;
+            enemyObject.animator.ResetDeathRotation();
             
             _battleState = CombatService.CreateBattle(playerObject.player, enemyObject.enemy);
         
@@ -106,17 +107,19 @@ namespace LT_Game.Gameplay.Behaviours
             {
                 _battlesWon++;
                 playerObject.player.HealToFull();
-        
-                if (_battlesWon >= GameConfig.VictoriesToWin)
-                    ShowWinScreen();
-                else
+                enemyObject.animator.DeathAnimation().onComplete = () =>
                 {
-                    weaponSelector.Enable();
-                    weaponSelector.animator.ShowAnimation();
-                }
+                    if (_battlesWon >= GameConfig.VictoriesToWin)
+                        ShowWinScreen();
+                    else
+                    {
+                        weaponSelector.Enable();
+                        weaponSelector.animator.ShowAnimation();
+                    }
+                };
             }
             else
-                ShowGameOver();
+                playerObject.animator.DeathAnimation().onComplete = ShowGameOver;
         }
 
         private void OnClassTypeButtonClicked(ClassType classType)
