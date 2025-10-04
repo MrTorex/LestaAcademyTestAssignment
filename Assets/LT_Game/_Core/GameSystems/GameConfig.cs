@@ -1,5 +1,4 @@
 using System;
-using LT_Game.Core.Data;
 using LT_Game.Core.Data.Entities;
 using LT_Game.Core.Data.Enums;
 
@@ -9,36 +8,22 @@ namespace LT_Game.Core.GameSystems
     {
         public static Player CreateInitialPlayer(Random random, ClassType classType)
         {
-            int baseHealth;
-            Weapon startWeapon;
-
-            switch (classType)
+            var startWeapon = classType switch
             {
-                case ClassType.Rogue:
-                    baseHealth = 4;
-                    startWeapon = WeaponFactory.CreateDagger();
-                    break;
-                case ClassType.Warrior:
-                    baseHealth = 5;
-                    startWeapon = WeaponFactory.CreateSword();
-                    break;
-                case ClassType.Barbarian:
-                    baseHealth = 6;
-                    startWeapon = WeaponFactory.CreateClub();
-                    break;
-                default:
-                    throw new ArgumentException("Unknown class type", nameof(classType));            }
-            
+                ClassType.Rogue => WeaponFactory.CreateDagger(),
+                ClassType.Warrior => WeaponFactory.CreateSword(),
+                ClassType.Barbarian => WeaponFactory.CreateClub(),
+                _ => throw new ArgumentException("Unknown class type", nameof(classType))
+            };
+
             return new Player(
-                baseHealth: baseHealth,
+                baseHealth: 0,
                 strength: random.Next(1, 4), 
                 agility: random.Next(1, 4), 
                 endurance: random.Next(1, 4), 
                 weapon: startWeapon
             );
-        }    
-        
-            
+        }
 
         public static Enemy GetRandomEnemy(Random randomizer)
         {

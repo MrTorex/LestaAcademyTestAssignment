@@ -324,6 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110831827}
   - component: {fileID: 110831828}
+  - component: {fileID: 110831829}
   m_Layer: 5
   m_Name: EnemyHealthbarPanel
   m_TagString: Untagged
@@ -360,6 +361,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110831826}
   m_CullTransparentMesh: 1
+--- !u!114 &110831829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110831826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed78f1576574d9faeb54c8fde364670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Healthbar
+  slider: {fileID: 189613271}
+  healthbarText: {fileID: 505333010}
 --- !u!1 &189613269
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +550,8 @@ GameObject:
   m_Component:
   - component: {fileID: 265143122}
   - component: {fileID: 265143123}
+  - component: {fileID: 265143125}
+  - component: {fileID: 265143124}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -570,6 +587,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265143121}
   m_CullTransparentMesh: 1
+--- !u!114 &265143124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265143121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c183f4d9512b425cb3620cde2599104b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Animators.PlayerObjectAnimator
+--- !u!114 &265143125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265143121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fb9128c2144d7cbb487ee3314bab2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.PlayerObject
+  playerImage: {fileID: 677770486}
+  healthbar: {fileID: 2063094702}
 --- !u!1 &311153671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,6 +1683,8 @@ GameObject:
   m_Component:
   - component: {fileID: 820684347}
   - component: {fileID: 820684348}
+  - component: {fileID: 820684350}
+  - component: {fileID: 820684349}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -1675,6 +1720,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820684346}
   m_CullTransparentMesh: 1
+--- !u!114 &820684349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820684346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da9c299ff424eb3a91c2bc830387f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Animators.EnemyObjectAnimator
+--- !u!114 &820684350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820684346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4bd43508a6451da595b60ba83a38a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.EnemyObject
+  enemyImage: {fileID: 255921780}
+  healthbar: {fileID: 110831829}
 --- !u!1 &863328395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,6 +3149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2063094700}
   - component: {fileID: 2063094701}
+  - component: {fileID: 2063094702}
   m_Layer: 5
   m_Name: PlayerHealthbarPanel
   m_TagString: Untagged
@@ -3114,6 +3186,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063094699}
   m_CullTransparentMesh: 1
+--- !u!114 &2063094702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063094699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed78f1576574d9faeb54c8fde364670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Healthbar
+  slider: {fileID: 650099011}
+  healthbarText: {fileID: 1275300449}
 --- !u!1 &2120082477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,12 +3393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb09b884efc4e05beb29d53e1ac87c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.Behaviours.BattleManager
-  playerHealthBar: {fileID: 650099011}
-  enemyHealthBar: {fileID: 189613271}
-  playerHealthBarText: {fileID: 1275300449}
-  enemyHealthBarText: {fileID: 505333010}
-  playerImage: {fileID: 677770486}
-  enemyImage: {fileID: 255921780}
+  playerObject: {fileID: 265143125}
+  enemyObject: {fileID: 820684350}
   classTypeSelector: {fileID: 1434836352}
   nextTurnButton: {fileID: 970665258}
 --- !u!1 &2139024800

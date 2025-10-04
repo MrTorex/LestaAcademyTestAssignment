@@ -1,8 +1,6 @@
-using LT_Game.Core.Data.Entities;
 using LT_Game.Core.Data.Enums;
 using LT_Game.Core.GameSystems;
 using LT_Game.Gameplay.UI;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -10,25 +8,18 @@ using Random = System.Random;
 namespace LT_Game.Gameplay.Behaviours
 {
     public class BattleManager : MonoBehaviour
-    {
-        [SerializeField] private Slider playerHealthBar;
-        [SerializeField] private Slider enemyHealthBar;
-        
-        [SerializeField] private TMP_Text playerHealthBarText;
-        [SerializeField] private TMP_Text enemyHealthBarText;
-        
-        [SerializeField] private Image playerImage;
-        [SerializeField] private Image enemyImage;
+    { 
+        [SerializeField] private PlayerObject playerObject;
+        [SerializeField] private EnemyObject enemyObject;
         
         [SerializeField] private ClassTypeSelector classTypeSelector;
         
         [SerializeField] private Button nextTurnButton;
         
-        private Player _player;
-        private Enemy _enemy;
+        
         private CombatService.BattleState _battleState;
         private bool _isFirstBattle = true;
-        private int _battlesWon = 0;
+        private int _battlesWon;
 
         private readonly Random _random = new();
         
@@ -48,9 +39,10 @@ namespace LT_Game.Gameplay.Behaviours
 
         private void StartNewBattle()
         {
-            _enemy = GameConfig.GetRandomEnemy(_random);
+            enemyObject.enemy = GameConfig.GetRandomEnemy(_random);
+            enemyObject.Healthbar.owner = enemyObject.enemy;
             
-            _battleState = CombatService.CreateBattle(_player, _enemy);
+            _battleState = CombatService.CreateBattle(playerObject.player, enemyObject.enemy);
         
             UpdateUI();
         }
@@ -68,19 +60,16 @@ namespace LT_Game.Gameplay.Behaviours
         
         private void UpdateUI()
         {
-            playerHealthBar.value = (float)_player.health / _player.maxHealth;
-            enemyHealthBar.value = (float)_enemy.health / _enemy.maxHealth;
-            
-            playerHealthBarText.text = _player.health.ToString();
-            enemyHealthBarText.text = _enemy.health.ToString();
+            playerObject.Healthbar.UpdateValue();
+            enemyObject.Healthbar.UpdateValue();
         }
 
         private void EndBattle()
         {
-            if (_player.IsAlive)
+            if (playerObject.player.IsAlive)
             {
                 _battlesWon++;
-                _player.HealToFull();
+                playerObject.player.HealToFull();
                 
         
                 if (_battlesWon >= GameConfig.VictoriesToWin)
@@ -96,11 +85,13 @@ namespace LT_Game.Gameplay.Behaviours
         {
             if (_isFirstBattle)
             {
-                _player = GameConfig.CreateInitialPlayer(_random, classType);
+                playerObject.player = GameConfig.CreateInitialPlayer(_random, classType);
+                playerObject.player.LevelUp(classType);
+                playerObject.Healthbar.owner = playerObject.player;
                 _isFirstBattle = false;
             }
             else
-                _player.LevelUp(classType);
+                playerObject.player.LevelUp(classType);
             
             classTypeSelector.Hide();
             StartNewBattle();
