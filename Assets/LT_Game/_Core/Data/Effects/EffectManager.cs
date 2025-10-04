@@ -6,8 +6,8 @@ namespace LT_Game.Core.Data.Effects
 {
     public class EffectManager
     {
-        private readonly List<IEffect> _activeEffects = new();
-        public List<IEffect> ActiveEffects => _activeEffects;
+        public List<IEffect> activeEffects { get; } = new();
+
         private readonly Entity _owner;
 
         public EffectManager(Entity owner) =>
@@ -15,28 +15,28 @@ namespace LT_Game.Core.Data.Effects
 
         public void Add(IEffect effect)
         {
-            _activeEffects.Add(effect);
+            activeEffects.Add(effect);
             effect.OnApply(_owner);
         }
 
         public void Remove(IEffect effect)
         {
-            _activeEffects.Remove(effect);
+            activeEffects.Remove(effect);
             effect.OnRemove(_owner);
         }
 
         public void ProcessTurnStart()
         {
-            foreach (var effect in _activeEffects.ToList())
+            foreach (var effect in activeEffects.ToList())
                 effect.OnTurnStart(_owner);
         }
 
         public DamageResult ModifyAttackDamage(Entity target, DamageResult baseDamage) => 
-            _activeEffects.Aggregate(baseDamage, (current, effect) => 
+            activeEffects.Aggregate(baseDamage, (current, effect) => 
                 effect.OnAttack(_owner, target, current));
         
         public DamageResult ModifyDefenseDamage(Entity attacker, DamageResult incomingDamage) =>
-            _activeEffects.Aggregate(incomingDamage, (current, effect) =>
+            activeEffects.Aggregate(incomingDamage, (current, effect) =>
                 effect.OnDefend(_owner, attacker, current));
     }
 }

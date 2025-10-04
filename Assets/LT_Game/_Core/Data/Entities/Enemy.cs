@@ -35,7 +35,7 @@ namespace LT_Game.Core.Data.Entities
                                              $"Strength: {strength}, Agility: {agility},  Endurance: {endurance}, " +
                                              $"LootWeapon: {lootWeapon.name}, Active Effects: ";
 
-            effectManager.ActiveEffects.Aggregate(result, (current, effect) => current + $"{effect}; ");
+            effectManager.activeEffects.Aggregate(result, (current, effect) => current + $"{effect}; ");
             result += "}}";
             return result;
         }

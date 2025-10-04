@@ -48,7 +48,7 @@ namespace LT_Game.Core.Data.Entities
             var result = $"Entity{{Health: {health}, MaxHealth: {maxHealth}, Strength: {strength}, Agility: {agility}, " +
                          $"Endurance: {endurance}, Active Effects: ";
 
-            return effectManager.ActiveEffects.Aggregate(result, (current, effect) => current + $"{effect}; ");
+            return effectManager.activeEffects.Aggregate(result, (current, effect) => current + $"{effect}; ");
         }
     }
 }
