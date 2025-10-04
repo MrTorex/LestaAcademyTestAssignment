@@ -9,7 +9,7 @@ namespace LT_Game.Core.Data.Entities
     public class Player : Entity
     {
         public Dictionary<ClassType, int> ClassLevels { get; } = new();
-        public Weapon CurrentWeapon { get; private set; }
+        public Weapon CurrentWeapon { get; set; }
 
         public Player(int baseHealth, int strength, int agility, int endurance, Weapon weapon) :
             base(baseHealth + endurance, strength, agility, endurance)

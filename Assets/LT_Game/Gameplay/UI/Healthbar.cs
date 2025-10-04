@@ -13,10 +13,18 @@ namespace LT_Game.Gameplay.UI
 
         public Entity owner { get; set; }
 
-        public void UpdateValue()
+        public Tween UpdateValue()
         {
-            slider.DOValue((float)owner.health / owner.maxHealth, 0.5f);
-            healthbarText.text = owner.health.ToString();
+            var updateValueAnimationSequence = DOTween.Sequence();
+            updateValueAnimationSequence.Append(
+                slider.DOValue((float)owner.health / owner.maxHealth, 0.5f));
+            updateValueAnimationSequence.JoinCallback(() =>
+            {
+                healthbarText.text = owner.health > 0 
+                    ? owner.health.ToString()
+                    : 0.ToString();
+            });
+            return updateValueAnimationSequence;
         }
     }
 }

@@ -48,8 +48,8 @@ namespace LT_Game.Core.GameSystems
             ProcessAttack(attacker, defender, state);
             
             state.CurrentTurnIndex = 1 - state.CurrentTurnIndex;
-        
-            return true;
+            
+            return state.Player.IsAlive && state.Enemy.IsAlive;
         }
 
         private static void ProcessAttack(Entity attacker, Entity defender, BattleState state)

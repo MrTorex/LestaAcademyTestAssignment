@@ -13,28 +13,17 @@ namespace LT_Game.Gameplay.UI
         [SerializeField] private Button classTypeBarbarianButton;
         public Button ClassTypeBarbarianButton => classTypeBarbarianButton;
         
-        private ClassTypeSelectorAnimator _animator;
+        public ClassTypeSelectorAnimator animator {get; private set;}
 
         private void Start()
         {
-            _animator = GetComponent<ClassTypeSelectorAnimator>();
+            animator = GetComponent<ClassTypeSelectorAnimator>();
         }
 
-        private void Enable() => 
+        public void Enable() => 
             gameObject.SetActive(true);
         
-        private void Disable() =>
+        public void Disable() =>
             gameObject.SetActive(false);
-
-        public void Show()
-        {
-            Enable();
-            _animator.ShowAnimation();
-        }
-
-        public void Hide()
-        {
-            _animator.HideAnimation().onComplete += Disable;
-        }
     }
 }
