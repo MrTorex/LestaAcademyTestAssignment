@@ -1,4 +1,6 @@
 using DG.Tweening;
+using LT_Game.Content;
+using LT_Game.Core.Data.Entities;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -7,6 +9,8 @@ namespace LT_Game.Gameplay.UI.Animators
 {
     public class EnemyObjectAnimator : MonoBehaviour
     {
+        [SerializeField] private GameAssets assets;
+        
         [SerializeField] private Image enemyImage;
         
         private Vector3 _initPos;
@@ -42,5 +46,9 @@ namespace LT_Game.Gameplay.UI.Animators
 
         public void ResetDeathRotation() => 
             transform.rotation = Quaternion.Euler(0, 0, 0);
+        
+        public void Initialize(Enemy enemy) =>
+            enemyImage.sprite = 
+                assets.GetEnemySprite(enemy.name);
     }
 }

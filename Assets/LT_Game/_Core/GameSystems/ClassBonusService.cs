@@ -85,5 +85,32 @@ namespace LT_Game.Core.GameSystems
                     throw new ArgumentOutOfRangeException(nameof(level), level, null);
             }
         }
+
+        public static string GetRogueBonusDescription(int level) =>
+            level switch
+            {
+                1 => new RogueStealthAttackEffect().description,
+                2 => new AgilityBuffEffect(1, -1).description,
+                3 => new RoguePoisonEffect().description,
+                _ => throw new ArgumentOutOfRangeException(nameof(level), level, null)
+            };
+
+        public static string GetWarriorBonusDescription(int level) =>
+            level switch
+            {
+                1 => new WarriorFirstStrikeEffect().description,
+                2 => new WarriorShieldEffect().description,
+                3 => new StrengthBuffEffect(1, -1).description,
+                _ => throw new ArgumentOutOfRangeException(nameof(level), level, null)
+            };
+
+        public static string GetBarbarianBonusDescription(int level) =>
+            level switch
+            {
+                1 => new BarbarianRageEffect().description,
+                2 => new BarbarianStoneSkinEffect().description,
+                3 => new EnduranceBuffEffect(1, -1).description,
+                _ => throw new ArgumentOutOfRangeException(nameof(level), level, null)
+            };
     }
 }

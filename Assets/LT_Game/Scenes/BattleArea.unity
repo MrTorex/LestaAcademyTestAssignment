@@ -601,7 +601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c183f4d9512b425cb3620cde2599104b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Animators.PlayerObjectAnimator
+  assets: {fileID: 11400000, guid: 3b5bce52e3bee590c8f6b50115e8c92e, type: 2}
   playerImage: {fileID: 677770486}
+  weaponImage: {fileID: 275930071}
 --- !u!114 &265143125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2202,6 +2204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da9c299ff424eb3a91c2bc830387f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Animators.EnemyObjectAnimator
+  assets: {fileID: 11400000, guid: 3b5bce52e3bee590c8f6b50115e8c92e, type: 2}
   enemyImage: {fileID: 255921780}
 --- !u!114 &820684350
 MonoBehaviour:
@@ -3475,8 +3478,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.ClassTypeSelector
   classTypeRogueButton: {fileID: 1996733584}
+  classTypeRogueButtonText: {fileID: 595068868}
   classTypeWarriorButton: {fileID: 311153673}
+  classTypeWarriorButtonText: {fileID: 1472115553}
   classTypeBarbarianButton: {fileID: 74057909}
+  classTypeBarbarianButtonText: {fileID: 1084107657}
 --- !u!1 &1472115551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,8 +3930,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464352752c454f6792be8c325b8dfb41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.WeaponSelector
+  assets: {fileID: 11400000, guid: 3b5bce52e3bee590c8f6b50115e8c92e, type: 2}
   weaponOldButton: {fileID: 533407708}
+  weaponOldButtonText: {fileID: 1378771840}
+  weaponOldButtonImage: {fileID: 2113898166}
   weaponNewButton: {fileID: 769632086}
+  weaponNewButtonText: {fileID: 1858984360}
+  weaponNewButtonImage: {fileID: 1059772418}
 --- !u!114 &1860862939
 MonoBehaviour:
   m_ObjectHideFlags: 0

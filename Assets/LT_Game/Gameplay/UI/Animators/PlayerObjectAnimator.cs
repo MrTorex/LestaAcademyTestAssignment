@@ -1,4 +1,7 @@
+using System;
 using DG.Tweening;
+using LT_Game.Content;
+using LT_Game.Core.Data.Entities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +9,10 @@ namespace LT_Game.Gameplay.UI.Animators
 {
     public class PlayerObjectAnimator : MonoBehaviour
     {
+        [SerializeField] private GameAssets assets;
+            
         [SerializeField] private Image playerImage;
+        [SerializeField] private Image weaponImage;
         
         private Vector3 _initPos;
 
@@ -37,5 +43,9 @@ namespace LT_Game.Gameplay.UI.Animators
             deathAnimationSequence.Append(transform.DORotate(new Vector3(0,0, 90), 0.2f));
             return deathAnimationSequence;
         }
+
+        public void Initialize(Player player) =>
+            weaponImage.sprite = 
+                assets.GetWeaponSprite(player.CurrentWeapon.name);
     }
 }

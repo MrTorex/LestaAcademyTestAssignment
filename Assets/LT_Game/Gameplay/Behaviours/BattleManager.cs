@@ -39,6 +39,7 @@ namespace LT_Game.Gameplay.Behaviours
             weaponSelector.Disable();
             weaponSelector.animator.HideAnimation();
             
+            classTypeSelector.InitializeFirstTime();
             classTypeSelector.Enable();
             classTypeSelector.animator.ShowAnimation();
         }
@@ -48,6 +49,7 @@ namespace LT_Game.Gameplay.Behaviours
             enemyObject.enemy = GameConfig.GetRandomEnemy(_random);
             enemyObject.Healthbar.owner = enemyObject.enemy;
             enemyObject.animator.ResetDeathRotation();
+            enemyObject.animator.Initialize(enemyObject.enemy);
             
             _battleState = CombatService.CreateBattle(playerObject.player, enemyObject.enemy);
         
@@ -113,6 +115,7 @@ namespace LT_Game.Gameplay.Behaviours
                         ShowWinScreen();
                     else
                     {
+                        weaponSelector.Initialize(playerObject.player.CurrentWeapon, enemyObject.enemy.lootWeapon);
                         weaponSelector.Enable();
                         weaponSelector.animator.ShowAnimation();
                     }
@@ -133,6 +136,8 @@ namespace LT_Game.Gameplay.Behaviours
             }
             else
                 playerObject.player.LevelUp(classType);
+            
+            playerObject.animator.Initialize(playerObject.player);
 
             classTypeSelector.animator.HideAnimation().onComplete = () =>
             {
@@ -151,6 +156,7 @@ namespace LT_Game.Gameplay.Behaviours
                 weaponSelector.Disable();
                 weaponSelector.animator.HideAnimation().onComplete = () =>
                 {
+                    classTypeSelector.Initialize(playerObject.player);
                     classTypeSelector.Enable();
                     classTypeSelector.animator.ShowAnimation();
                 };

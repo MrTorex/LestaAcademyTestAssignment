@@ -7,7 +7,7 @@ namespace LT_Game.Core.GameSystems
     {
         public static Enemy CreateGoblin() =>
             new(
-                name: "Гоблин",
+                name: "Goblin",
                 baseHealth: 5,
                 strength: 1,
                 agility: 1,
@@ -18,7 +18,7 @@ namespace LT_Game.Core.GameSystems
         
         public static Enemy CreateSkeleton() =>
             new(
-                name: "Скелет",
+                name: "Skeleton",
                 baseHealth: 10,
                 strength: 2,
                 agility: 2,
@@ -30,7 +30,7 @@ namespace LT_Game.Core.GameSystems
         
         public static Enemy CreateSlime() =>
             new(
-                name: "Слайм",
+                name: "Slime",
                 baseHealth: 8,
                 strength: 3,
                 agility: 1,
@@ -42,7 +42,7 @@ namespace LT_Game.Core.GameSystems
         
         public static Enemy CreateGhost() =>
             new(
-                name: "Призрак",
+                name: "Ghost",
                 baseHealth: 6,
                 strength: 1,
                 agility: 3,
@@ -54,7 +54,7 @@ namespace LT_Game.Core.GameSystems
         
         public static Enemy CreateGolem() =>
             new(
-                name: "Голем",
+                name: "Golem",
                 baseHealth: 10,
                 strength: 3,
                 agility: 1,
@@ -66,7 +66,7 @@ namespace LT_Game.Core.GameSystems
         
         public static Enemy CreateDragon() =>
             new(
-                name: "Дракон",
+                name: "Dragon",
                 baseHealth: 20,
                 strength: 3,
                 agility: 3,
