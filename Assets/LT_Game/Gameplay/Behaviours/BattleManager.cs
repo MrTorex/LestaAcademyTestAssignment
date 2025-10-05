@@ -15,6 +15,7 @@ namespace LT_Game.Gameplay.Behaviours
         [SerializeField] private ClassTypeSelector classTypeSelector;
         [SerializeField] private WeaponSelector weaponSelector;
         
+        [SerializeField] private BackgroundImagesSlider backgroundImagesSlider;
         
         private CombatService.BattleState _battleState;
         private bool _isFirstBattle = true;
@@ -115,9 +116,12 @@ namespace LT_Game.Gameplay.Behaviours
                         ShowWinScreen();
                     else
                     {
-                        weaponSelector.Initialize(playerObject.player.CurrentWeapon, enemyObject.enemy.lootWeapon);
-                        weaponSelector.Enable();
-                        weaponSelector.animator.ShowAnimation();
+                        backgroundImagesSlider.Swap().onComplete = () =>
+                        {
+                            weaponSelector.Initialize(playerObject.player.CurrentWeapon, enemyObject.enemy.lootWeapon);
+                            weaponSelector.Enable();
+                            weaponSelector.animator.ShowAnimation();
+                        };
                     }
                 };
             }
