@@ -40,21 +40,22 @@ namespace LT_Game.Gameplay.Behaviours
             weaponSelector.Disable();
             weaponSelector.animator.HideAnimation();
             
-            classTypeSelector.InitializeFirstTime();
-            classTypeSelector.Enable();
-            classTypeSelector.animator.ShowAnimation();
+            classTypeSelector.Disable();
+            classTypeSelector.animator.HideAnimation().onComplete += () =>
+            {
+                classTypeSelector.Enable();
+                classTypeSelector.InitializeFirstTime();
+                classTypeSelector.animator.ShowAnimation();
+            };
         }
 
         private void StartNewBattle()
         {
             enemyObject.enemy = GameConfig.GetRandomEnemy(_random);
             enemyObject.Healthbar.owner = enemyObject.enemy;
-            enemyObject.animator.ResetDeathRotation();
             enemyObject.animator.Initialize(enemyObject.enemy);
-            
             _battleState = CombatService.CreateBattle(playerObject.player, enemyObject.enemy);
-        
-            UpdateUI(true);
+            enemyObject.animator.SpawnAnimation().onComplete += () => UpdateUI(true);
         }
 
         private void ExecuteBattle()
@@ -137,11 +138,10 @@ namespace LT_Game.Gameplay.Behaviours
                 playerObject.player.LevelUp(classType);
                 playerObject.Healthbar.owner = playerObject.player;
                 _isFirstBattle = false;
+                playerObject.animator.Initialize(playerObject.player);
             }
             else
                 playerObject.player.LevelUp(classType);
-            
-            playerObject.animator.Initialize(playerObject.player);
 
             classTypeSelector.animator.HideAnimation().onComplete = () =>
             {
@@ -154,7 +154,7 @@ namespace LT_Game.Gameplay.Behaviours
         {
             if (newWeapon)
                 playerObject.player.CurrentWeapon = enemyObject.enemy.lootWeapon;
-
+            playerObject.animator.Initialize(playerObject.player);
             weaponSelector.animator.HideAnimation().onComplete = () =>
             {
                 weaponSelector.Disable();

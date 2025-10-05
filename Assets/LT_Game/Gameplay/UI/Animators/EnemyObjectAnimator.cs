@@ -39,13 +39,20 @@ namespace LT_Game.Gameplay.UI.Animators
         public Tween DeathAnimation()
         {
             var deathAnimationSequence = DOTween.Sequence();
-            deathAnimationSequence.Append(transform.DORotate(new Vector3(0,0, -90), 0.2f));
-            
+            deathAnimationSequence.Append(transform.DOScaleY(0, 0.5f));
+            deathAnimationSequence.Join(enemyImage.DOFade(0, 0.5f));
+            deathAnimationSequence.AppendInterval(1);
             return deathAnimationSequence;
         }
-
-        public void ResetDeathRotation() => 
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+        
+        public Tween SpawnAnimation()
+        {
+            var spawnAnimationSequence = DOTween.Sequence();
+            spawnAnimationSequence.Append(transform.DOScaleY(1, 0.5f));
+            spawnAnimationSequence.Join(enemyImage.DOFade(1, 0.5f));
+            spawnAnimationSequence.AppendInterval(1);
+            return spawnAnimationSequence;
+        }
         
         public void Initialize(Enemy enemy) =>
             enemyImage.sprite = 
