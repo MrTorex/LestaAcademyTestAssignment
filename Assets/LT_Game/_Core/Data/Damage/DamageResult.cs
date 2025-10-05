@@ -42,7 +42,7 @@ namespace LT_Game.Core.Data
         public override string ToString()
         {
             var result = "";
-            foreach (var (type, damage) in damageByType)
+            foreach (var (type, damage) in resultDamageByType)
                 result += $"{type}: {damage}; ";
             result += $"Total: {ResultDamage}";
             return result;

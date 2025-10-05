@@ -5,9 +5,12 @@ namespace LT_Game.Core.Data.Effects.Concrete
 {
     public class DoubleDamageFromBludgeoningEffect : StatusEffect
     {
-        public DoubleDamageFromBludgeoningEffect() =>
+        public DoubleDamageFromBludgeoningEffect()
+        {
             description = "Takes double damage from bludgeoning damage";
-        
+            duration = -1;
+        }
+
         public override DamageResult OnDefend(Entity owner, Entity attacker, DamageResult damage)
         {
             var result = damage.Clone();

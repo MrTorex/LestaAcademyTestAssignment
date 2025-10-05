@@ -5,9 +5,12 @@ namespace LT_Game.Core.Data.Effects.Concrete
 {
     public class NoDamageFromSlashingEffect : StatusEffect
     {
-        public NoDamageFromSlashingEffect() =>
+        public NoDamageFromSlashingEffect()
+        {
+            duration = -1;
             description = "Takes no damage from slashing damage";
-        
+        }
+
         public override DamageResult OnDefend(Entity owner, Entity attacker, DamageResult damage)
         {
             var result = damage.Clone();
