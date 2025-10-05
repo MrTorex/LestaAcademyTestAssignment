@@ -33,3 +33,27 @@ MonoBehaviour:
   victory: {fileID: 8300000, guid: 0cb111ba8671ddee28e41067421125ce, type: 3}
   death: {fileID: 8300000, guid: da43a7a5c844cb00288c755296e65a67, type: 3}
   playButton: {fileID: 8300000, guid: da7e74f25ca7e0171a0fa87d842a8571, type: 3}
+  rogue: {fileID: 8300000, guid: efe73dddd5920418e8ddd079f266ec55, type: 3}
+  warrior: {fileID: 8300000, guid: 1f4996cfc41c6f4919be3b14ac101778, type: 3}
+  barbarian: {fileID: 8300000, guid: a8759a5d53c9241f8aa89a1a3be58ac2, type: 3}
+  playerAttack: {fileID: 8300000, guid: e118d5f6ce0aa389c9c8c39d277ffbfd, type: 3}
+  playerDefend: {fileID: 8300000, guid: b7dd06e1a935356c48f97aa2828e045c, type: 3}
+  playerDeath: {fileID: 8300000, guid: ae8c96c5b4e3911189c087c228a6c5c0, type: 3}
+  goblinAttack: {fileID: 8300000, guid: d25bd03cda5c2463ab103857e9f10f9d, type: 3}
+  goblinDefend: {fileID: 8300000, guid: 445e3b7c4dc017d38bc2b809c6153fbc, type: 3}
+  goblinDeath: {fileID: 8300000, guid: 05d7af77fa1b5b752b0e25a398407036, type: 3}
+  skeletonAttack: {fileID: 8300000, guid: 6e6cca31f0f06239887583a6efbb1ec4, type: 3}
+  skeletonDefend: {fileID: 8300000, guid: d47b2143d4364693aa414f8f2989e338, type: 3}
+  skeletonDeath: {fileID: 8300000, guid: 27fdf093b21f2fa9aa17ed2340201a37, type: 3}
+  slimeAttack: {fileID: 8300000, guid: 76ff732276e8358338c9a50621267d71, type: 3}
+  slimeDefend: {fileID: 8300000, guid: 004060f8d85db56bba0f71a6b8eb0f34, type: 3}
+  slimeDeath: {fileID: 8300000, guid: 84b668a89cce20e2e83d80a9fa5f3663, type: 3}
+  ghostAttack: {fileID: 8300000, guid: 3fce86a3bf932de46a5820d1f4489fe0, type: 3}
+  ghostDefend: {fileID: 8300000, guid: 7c5852b433a4befaf98b2465bd71164a, type: 3}
+  ghostDeath: {fileID: 8300000, guid: 71efb837c7c094ca6a78b65a874b2776, type: 3}
+  golemAttack: {fileID: 8300000, guid: 39412339d8db0962b8bb7bfe0afee9eb, type: 3}
+  golemDefend: {fileID: 8300000, guid: 33c49b7e5a4953b5f8003495ca588a24, type: 3}
+  golemDeath: {fileID: 8300000, guid: c62eb0db59c54de17a3d9ec4576d3450, type: 3}
+  dragonAttack: {fileID: 8300000, guid: ba94223bec8c46650a2f37bbbbe7045d, type: 3}
+  dragonDefend: {fileID: 8300000, guid: daa9222f954dc6211beb276c322f97cd, type: 3}
+  dragonDeath: {fileID: 8300000, guid: 9aa1e847e4e8cd4078a9e10299d8d76f, type: 3}

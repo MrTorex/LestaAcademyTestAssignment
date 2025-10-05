@@ -768,6 +768,7 @@ MonoBehaviour:
   assets: {fileID: 11400000, guid: 3b5bce52e3bee590c8f6b50115e8c92e, type: 2}
   playerImage: {fileID: 677770486}
   weaponImage: {fileID: 275930071}
+  audioSource: {fileID: 2136977641}
 --- !u!114 &265143125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2446,6 +2447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.UI.Animators.EnemyObjectAnimator
   assets: {fileID: 11400000, guid: 3b5bce52e3bee590c8f6b50115e8c92e, type: 2}
   enemyImage: {fileID: 255921780}
+  audioSource: {fileID: 2136977641}
 --- !u!114 &820684350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4764,6 +4766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb09b884efc4e05beb29d53e1ac87c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LT_Game.Gameplay.Behaviours.BattleManager
+  assets: {fileID: 11400000, guid: 3b5bce52e3bee590c8f6b50115e8c92e, type: 2}
   playerObject: {fileID: 265143125}
   enemyObject: {fileID: 820684350}
   classTypeSelector: {fileID: 1434836352}

@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using LT_Game.Content;
 using LT_Game.Core.Data.Entities;
@@ -14,6 +13,8 @@ namespace LT_Game.Gameplay.UI.Animators
         [SerializeField] private Image playerImage;
         [SerializeField] private Image weaponImage;
         
+        [SerializeField] private AudioSource audioSource;
+        
         private Vector3 _initPos;
 
         private void Start()
@@ -25,6 +26,7 @@ namespace LT_Game.Gameplay.UI.Animators
         {
             var attackAnimationSequence = DOTween.Sequence();
             attackAnimationSequence.Append(transform.DOLocalMoveX(_initPos.x + 700, 0.5f));
+            attackAnimationSequence.JoinCallback(() => audioSource.PlayOneShot(assets.playerAttack));
             attackAnimationSequence.Append(transform.DOLocalMoveX(_initPos.x, 0.2f));
             return attackAnimationSequence;
         }
@@ -33,6 +35,7 @@ namespace LT_Game.Gameplay.UI.Animators
         {
             var damageAnimationSequence = DOTween.Sequence();
             damageAnimationSequence.Append(transform.DOShakePosition(1, new Vector3(10, 0, 0)));
+            damageAnimationSequence.JoinCallback(() => audioSource.PlayOneShot(assets.playerDefend));
             damageAnimationSequence.AppendInterval(0.5f);
             return damageAnimationSequence;
         }
@@ -41,6 +44,7 @@ namespace LT_Game.Gameplay.UI.Animators
         {
             var deathAnimationSequence = DOTween.Sequence();
             deathAnimationSequence.Append(transform.DORotate(new Vector3(0,0, 90), 0.2f));
+            deathAnimationSequence.JoinCallback(() => audioSource.PlayOneShot(assets.playerDeath));
             return deathAnimationSequence;
         }
 

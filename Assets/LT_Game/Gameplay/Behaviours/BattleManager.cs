@@ -1,4 +1,5 @@
 using DG.Tweening;
+using LT_Game.Content;
 using LT_Game.Core.Data.Enums;
 using LT_Game.Core.GameSystems;
 using LT_Game.Gameplay.UI;
@@ -11,6 +12,8 @@ namespace LT_Game.Gameplay.Behaviours
 {
     public class BattleManager : MonoBehaviour
     { 
+        [SerializeField] private GameAssets assets;
+        
         [SerializeField] private PlayerObject playerObject;
         [SerializeField] private EnemyObject enemyObject;
         
@@ -21,6 +24,8 @@ namespace LT_Game.Gameplay.Behaviours
         
         [SerializeField] private EndScreen endScreen;
         
+        private AudioSource _audioSource;
+        
         private CombatService.BattleState _battleState;
         private bool _isFirstBattle = true;
         private int _battlesWon;
@@ -29,6 +34,8 @@ namespace LT_Game.Gameplay.Behaviours
         
         private void Start()
         {
+            _audioSource = GetComponent<AudioSource>();
+            
             classTypeSelector.ClassTypeRogueButton.onClick.
                 AddListener(() => OnClassTypeButtonClicked(ClassType.Rogue));
             classTypeSelector.ClassTypeWarriorButton.onClick.
@@ -59,7 +66,7 @@ namespace LT_Game.Gameplay.Behaviours
             enemyObject.Healthbar.owner = enemyObject.enemy;
             enemyObject.animator.Initialize(enemyObject.enemy);
             _battleState = CombatService.CreateBattle(playerObject.player, enemyObject.enemy);
-            enemyObject.animator.SpawnAnimation().onComplete += () => UpdateUI(true);
+            enemyObject.animator.SpawnAnimation(enemyObject.enemy).onComplete += () => UpdateUI(true);
         }
 
         private void ExecuteBattle()
@@ -69,13 +76,13 @@ namespace LT_Game.Gameplay.Behaviours
             var attackAnimation = _battleState.TurnOrder
                 [_battleState.CurrentTurnIndex] == playerObject.player
                 ? playerObject.animator.AttackAnimation()
-                : enemyObject.animator.AttackAnimation();
+                : enemyObject.animator.AttackAnimation(enemyObject.enemy);
 
             attackAnimation.OnComplete(() =>
             {
                 var damageAnimation = _battleState.TurnOrder
                     [_battleState.CurrentTurnIndex] == playerObject.player
-                    ? enemyObject.animator.DamageAnimation()
+                    ? enemyObject.animator.DamageAnimation(enemyObject.enemy)
                     : playerObject.animator.DamageAnimation();
                 
                 battleContinues = CombatService.ExecuteNextTurn(_battleState);
@@ -115,7 +122,7 @@ namespace LT_Game.Gameplay.Behaviours
             {
                 _battlesWon++;
                 playerObject.player.HealToFull();
-                enemyObject.animator.DeathAnimation().onComplete = () =>
+                enemyObject.animator.DeathAnimation(enemyObject.enemy).onComplete = () =>
                 {
                     if (_battlesWon >= GameConfig.VictoriesToWin)
                         endScreen.Show(true).onComplete = () => SceneManager.LoadScene((int)SceneIds.MainMenu);
@@ -149,6 +156,15 @@ namespace LT_Game.Gameplay.Behaviours
             else
                 playerObject.player.LevelUp(classType);
 
+            var clip = classType switch
+            {
+                ClassType.Rogue => assets.rogue,
+                ClassType.Warrior => assets.warrior,
+                ClassType.Barbarian => assets.barbarian,
+                _ => null
+            };
+            _audioSource.PlayOneShot(clip);
+            
             classTypeSelector.animator.HideAnimation().onComplete = () =>
             {
                 classTypeSelector.Disable();

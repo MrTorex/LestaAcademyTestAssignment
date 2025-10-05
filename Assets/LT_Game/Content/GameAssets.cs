@@ -40,6 +40,38 @@ namespace LT_Game.Content
         [Header("SFXs")]
         public AudioClip playButton;
         
+        public AudioClip rogue;
+        public AudioClip warrior;
+        public AudioClip barbarian;
+        
+        public AudioClip playerAttack;
+        public AudioClip playerDefend;
+        public AudioClip playerDeath;
+        
+        public AudioClip goblinAttack;
+        public AudioClip goblinDefend;
+        public AudioClip goblinDeath;
+        
+        public AudioClip skeletonAttack;
+        public AudioClip skeletonDefend;
+        public AudioClip skeletonDeath;
+        
+        public AudioClip slimeAttack;
+        public AudioClip slimeDefend;
+        public AudioClip slimeDeath;
+        
+        public AudioClip ghostAttack;
+        public AudioClip ghostDefend;
+        public AudioClip ghostDeath;
+        
+        public AudioClip golemAttack;
+        public AudioClip golemDefend;
+        public AudioClip golemDeath;
+        
+        public AudioClip dragonAttack;
+        public AudioClip dragonDefend;
+        public AudioClip dragonDeath;
+        
         public Sprite GetWeaponSprite(string weaponName) => 
             weaponName switch
             {
@@ -63,5 +95,37 @@ namespace LT_Game.Content
                 "Dragon" => dragonSprite,
                 _ => throw new Exception($"No enemy sprite for: {enemyName}!")
             };
+
+        public AudioClip GetEnemyAudioClip(string enemyName, string state)
+        {
+            return (enemyName, state) switch
+            {
+                ("Goblin", "Attack") => goblinAttack,
+                ("Goblin", "Defend") => goblinDefend,
+                ("Goblin", "Death") => goblinDeath,
+        
+                ("Skeleton", "Attack") => skeletonAttack,
+                ("Skeleton", "Defend") => skeletonDefend,
+                ("Skeleton", "Death") => skeletonDeath,
+        
+                ("Slime", "Attack") => slimeAttack,
+                ("Slime","Defend") => slimeDefend,
+                ("Slime","Death") => slimeDeath,
+                
+                ("Ghost", "Attack") => ghostAttack,
+                ("Ghost","Defend") => ghostDefend,
+                ("Ghost","Death") => ghostDeath,
+                
+                ("Golem", "Attack") => golemAttack,
+                ("Golem","Defend") => golemDefend,
+                ("Golem","Death") => golemDeath,
+                
+                ("Dragon", "Attack") => dragonAttack,
+                ("Dragon","Defend") => dragonDefend,
+                ("Dragon","Death") => dragonDeath,
+        
+                _ => throw new Exception($"No AudioClip {state} for {enemyName}!")
+            };
+        }
     }
 }
