@@ -2,7 +2,9 @@ using DG.Tweening;
 using LT_Game.Core.Data.Enums;
 using LT_Game.Core.GameSystems;
 using LT_Game.Gameplay.UI;
+using LT_Game.Gameplay.UI.Enums;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace LT_Game.Gameplay.Behaviours
@@ -16,6 +18,8 @@ namespace LT_Game.Gameplay.Behaviours
         [SerializeField] private WeaponSelector weaponSelector;
         
         [SerializeField] private BackgroundImagesSlider backgroundImagesSlider;
+        
+        [SerializeField] private EndScreen endScreen;
         
         private CombatService.BattleState _battleState;
         private bool _isFirstBattle = true;
@@ -114,7 +118,7 @@ namespace LT_Game.Gameplay.Behaviours
                 enemyObject.animator.DeathAnimation().onComplete = () =>
                 {
                     if (_battlesWon >= GameConfig.VictoriesToWin)
-                        ShowWinScreen();
+                        endScreen.Show(true).onComplete = () => SceneManager.LoadScene((int)SceneIds.MainMenu);
                     else
                     {
                         backgroundImagesSlider.Swap().onComplete = () =>
@@ -127,7 +131,9 @@ namespace LT_Game.Gameplay.Behaviours
                 };
             }
             else
-                playerObject.animator.DeathAnimation().onComplete = ShowGameOver;
+                playerObject.animator.DeathAnimation().onComplete = () => 
+                    endScreen.Show().onComplete = () => 
+                        SceneManager.LoadScene((int)SceneIds.MainMenu);
         }
 
         private void OnClassTypeButtonClicked(ClassType classType)
@@ -165,18 +171,6 @@ namespace LT_Game.Gameplay.Behaviours
                     classTypeSelector.animator.ShowAnimation();
                 };
             };
-        }
-        
-        private void ShowWinScreen()
-        {
-            // TODO realise win screen
-            Debug.Log("YOU WON THE GAME!");
-        }
-
-        private void ShowGameOver()
-        {
-            // TODO realise game over
-            Debug.Log("GAME OVER");
         }
     }
 }

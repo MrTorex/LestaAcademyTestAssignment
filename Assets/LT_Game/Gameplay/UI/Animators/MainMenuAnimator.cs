@@ -1,4 +1,5 @@
 using DG.Tweening;
+using LT_Game.Content;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,17 @@ namespace LT_Game.Gameplay.UI.Animators
         [SerializeField] private TMP_Text gameNameText;
         [SerializeField] private Button playButton;
         [SerializeField] private Image fadeEffectImage;
+        
+        [SerializeField] private GameAssets assets;
+        [SerializeField] private AudioSource audioSource;
+        
         private const string AnimationId = "MainMenu";
+
+        private void Start()
+        {
+            var clip = assets.mainMenu;
+            audioSource.clip = clip;
+        }
 
         public void MainMenuLoop()
         {
@@ -60,14 +71,24 @@ namespace LT_Game.Gameplay.UI.Animators
         {
             fadeEffectImage.color = Color.white;
             
-            return fadeEffectImage.DOFade(0, 2).SetId(AnimationId);
+            return fadeEffectImage.DOFade(0, 2).SetId(AnimationId).OnStart(() =>
+            {
+                audioSource.Play();
+                audioSource.volume = 0.5f;
+                audioSource.DOFade(1, 2);
+            });
         }
         
         public Tween FadeOutEffect()
         {
             fadeEffectImage.color = new Color(0, 0, 0, 0);
             
-            return fadeEffectImage.DOFade(1, 1).SetId(AnimationId);
+            return fadeEffectImage.DOFade(1, 1).SetId(AnimationId).OnStart(() =>
+            {
+                var clip = assets.playButton;
+                audioSource.PlayOneShot(clip);
+                audioSource.DOFade(0, 0.9f).onComplete = audioSource.Stop;
+            });
         }
     }
 }

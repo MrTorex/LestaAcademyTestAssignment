@@ -24,7 +24,12 @@ MonoBehaviour:
   axeSprite: {fileID: -5825250732961213246, guid: 0df5efba3acaa882e8a6f0e2e456a219, type: 3}
   spearSprite: {fileID: 6108012597462862368, guid: aa7df029af859c4e39c35063d2723574, type: 3}
   legendarySwordSprite: {fileID: -7872711425633469846, guid: 85e79524fe785deb28cfafc95338de6c, type: 3}
-  battleMusic: {fileID: 0}
-  attackSound: {fileID: 0}
-  victorySound: {fileID: 0}
-  levelUpSound: {fileID: 0}
+  winScreenSprite: {fileID: -848381713617584042, guid: d3ae83e3c37d914d9b2bf1549ba8dba8, type: 3}
+  deathScreenSprite: {fileID: 7362440686132688866, guid: 1fa3f3d27394288fea896552e3da40ae, type: 3}
+  mainMenu: {fileID: 8300000, guid: c43e1fdfa504b8f11b883048e386889d, type: 3}
+  battle1: {fileID: 8300000, guid: 75a1aca0d302788c68f40e3c82cdf6af, type: 3}
+  battle2: {fileID: 8300000, guid: 0997d20a0632a5152bcc10096cccb041, type: 3}
+  battle3: {fileID: 8300000, guid: e26d12fd98fa0ef5b9a9c11c2431b3b8, type: 3}
+  victory: {fileID: 8300000, guid: 0cb111ba8671ddee28e41067421125ce, type: 3}
+  death: {fileID: 8300000, guid: da43a7a5c844cb00288c755296e65a67, type: 3}
+  playButton: {fileID: 8300000, guid: da7e74f25ca7e0171a0fa87d842a8571, type: 3}

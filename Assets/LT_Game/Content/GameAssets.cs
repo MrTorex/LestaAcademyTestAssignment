@@ -23,14 +23,22 @@ namespace LT_Game.Content
         public Sprite axeSprite;
         public Sprite spearSprite;
         public Sprite legendarySwordSprite;
-    
+        
+        [Header("EndScreens")]
+        public Sprite winScreenSprite;
+        public Sprite deathScreenSprite;
+        
         [Header("Audio")]
         [Header("Music")]
-        public AudioClip battleMusic;
-        [Header("Sounds")]
-        public AudioClip attackSound;
-        public AudioClip victorySound;
-        public AudioClip levelUpSound;
+        public AudioClip mainMenu;
+        public AudioClip battle1;
+        public AudioClip battle2;
+        public AudioClip battle3;
+        public AudioClip victory;
+        public AudioClip death;
+        
+        [Header("SFXs")]
+        public AudioClip playButton;
         
         public Sprite GetWeaponSprite(string weaponName) => 
             weaponName switch
